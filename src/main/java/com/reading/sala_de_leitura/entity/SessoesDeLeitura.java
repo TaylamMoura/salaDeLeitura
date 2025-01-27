@@ -1,13 +1,10 @@
 package com.reading.sala_de_leitura.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.sql.Time;
-
+@Setter
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
