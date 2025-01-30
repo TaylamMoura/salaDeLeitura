@@ -6,6 +6,7 @@ import com.google.gson.JsonParser;
 import com.reading.sala_de_leitura.dto.LivroDTO;
 import com.reading.sala_de_leitura.entity.Livro;
 import com.reading.sala_de_leitura.repository.LivroRepository;
+import com.reading.sala_de_leitura.service.validation.ValidadorExistencia;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,13 +14,16 @@ import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 
 @Service
-public class APIGoogleBooksService {
+public class LivroService {
 
     private final ConexaoAPI conexaoAPI;
     private final LivroRepository repository;
 
     @Autowired
-    public APIGoogleBooksService(ConexaoAPI conexaoAPI, LivroRepository repository) {
+    private ValidadorExistencia<LivroDTO> validadorAdicionarNoBD;
+
+    @Autowired
+    public LivroService(ConexaoAPI conexaoAPI, LivroRepository repository) {
         this.conexaoAPI = conexaoAPI;
         this.repository = repository;
     }
@@ -47,12 +51,15 @@ public class APIGoogleBooksService {
                 return null;
             }
         } catch (Exception e) {
-            e.printStackTrace(); // Substituir por log robusto no futuro
+            e.printStackTrace(); // MUDAR AQUI POR ALGO MELHOR
             return null;
         }
     }
 
-    public void salvarLivro(Livro livro){
+    public void salvarLivro(LivroDTO livroDTO){
+        validadorAdicionarNoBD.validar(livroDTO);
+
+        Livro livro =new Livro(livroDTO.id(), livroDTO.titulo(), livroDTO.autor(), livroDTO.paginas(), livroDTO.urlCapa(), livroDTO.anoPublicacao());
         repository.save(livro);
     }
 }
