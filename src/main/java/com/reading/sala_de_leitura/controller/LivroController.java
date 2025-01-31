@@ -7,8 +7,11 @@ import com.reading.sala_de_leitura.service.validation.Validador;
 import com.reading.sala_de_leitura.service.validation.ValidadorExistencia;
 import jakarta.validation.ValidationException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 public class LivroController {
@@ -37,9 +40,14 @@ public class LivroController {
 
     @Transactional
     @PostMapping("/salvarLivro")
-    public  String salvarLivro(@RequestBody LivroDTO livroDTO) {
+    public ResponseEntity<String> salvarLivro(@RequestBody LivroDTO livroDTO) {
         service.salvarLivro(livroDTO);
-        return "Livro salvo com sucesso";
+        return ResponseEntity.ok("Livro salvo com sucesso");
+    }
+
+    @GetMapping("/livrosSalvos")
+    public List<LivroDTO> exibirLivros(){
+        return service.exibirLivrosSalvos();
     }
 
 }
