@@ -2,10 +2,8 @@ package com.reading.sala_de_leitura.controller;
 
 
 import com.reading.sala_de_leitura.dto.LivroDTO;
-import com.reading.sala_de_leitura.service.LivroService;
 import com.reading.sala_de_leitura.service.validation.Validador;
 import com.reading.sala_de_leitura.service.validation.ValidadorExistencia;
-import jakarta.validation.ValidationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;

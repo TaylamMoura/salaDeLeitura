@@ -1,0 +1,124 @@
+Estrutura Recomendável:
+Backend:
+
+Service: Pesquisa o livro usando a API e retorna um DTO.
+
+Controller: Manipula as requisições e respostas,
+usando o DTO para transferir os dados ao frontend.
+
+Repository: Salva a entidade Livro no banco de
+dados quando o usuário confirma a seleção.
+
+
+Frontend:
+
+Busca de Livro: Envia a requisição ao endpoint de pesquisa
+e exibe os dados retornados (como capa, título, autor).
+
+Salvar Livro: Envia uma requisição ao endpoint para
+salvar o livro selecionado.
+
+----------------------------------------------------------------
+
+Peço desculpas pelo travamento. Vou retomar de onde parei e ajudar a organizar os próximos passos do seu projeto. Vamos dividir isso em funcionalidades e responsabilidades, e depois definir um plano de ação.
+
+### Funcionalidades e Responsabilidades
+
+1. **Pesquisar Livro por Título e Adicionar à Estante Virtual**
+   - **Backend**:
+     - Método para buscar o livro na API do Google Books.
+     - Método para salvar o livro no banco de dados.
+   - **Frontend**:
+     - Interface para entrada do título e exibição dos resultados da pesquisa.
+     - Botão para adicionar o livro à estante virtual.
+
+2. **Selecionar Livro e Definir Sessão de Leitura**
+   - **Frontend**:
+     - Interface para selecionar o livro.
+     - Entrada para definir o tempo da sessão (máximo de 2 horas).
+     - Botões para iniciar, pausar, retomar e parar a sessão.
+     - Exibição do cronômetro e controle do tempo restante.
+     - Notificação quando o tempo acabar.
+
+3. **Armazenar Dados da Sessão de Leitura**
+   - **Backend**:
+     - Método para salvar os dados da sessão (tempo definido, tempo restante, páginas lidas, etc.).
+     - Método para recuperar os dados já armazenados para exibição futura.
+
+4. **Exibir Estatísticas de Leitura**
+   - **Backend**:
+     - Calcular e fornecer dados como número de dias lendo o livro, média de tempo por sessão, etc.
+   - **Frontend**:
+     - Interface para mostrar as estatísticas na página do livro.
+
+5. **Modo Música durante a Sessão**
+   - **Frontend**:
+     - Interface para ativar/desativar o modo música.
+     - Integração com uma API de sons para reprodução de ruído branco ou sons da natureza.
+
+6. **Entrar Página Lida ao Finalizar Sessão**
+   - **Frontend**:
+     - Entrada para o usuário colocar até que página leu ao finalizar a sessão.
+     - Exibição da página inicial da próxima sessão com base na última página lida.
+
+### Resumo por Responsabilidade
+
+| Função/Funcionalidade                     | Responsabilidade       |
+|-------------------------------------------|------------------------|
+| Pesquisar Livro por Título e Adicionar à Estante | Backend e Frontend |
+| Selecionar Livro e Definir Sessão de Leitura     | Frontend            |
+| Armazenar Dados da Sessão de Leitura             | Backend             |
+| Exibir Estatísticas de Leitura                  | Backend e Frontend |
+| Modo Música durante a Sessão                    | Frontend            |
+| Entrar Página Lida ao Finalizar Sessão          | Frontend            |
+
+### Próximos Passos
+
+1. **Finalizar Funcionalidades do Backend**:
+   - Assegure que a lógica de busca, salvamento e recuperação de dados esteja funcionando corretamente.
+   - Teste com Insomnia ou Postman se ainda não o fez.
+
+2. **Desenvolver/Concluir o Frontend**:
+   - Crie a interface para interação do usuário conforme descrito.
+   - Integre as chamadas de API para buscar e salvar dados.
+
+3. **Implementar Cronômetro**:
+   - Lógica do cronômetro no frontend.
+   - Teste as funcionalidades de iniciar, pausar, retomar e parar.
+
+4. **Adicionar Funcionalidade de Música**:
+   - Integre uma API de sons.
+   - Teste a reprodução de ruídos brancos e sons da natureza.
+
+5. **Salvar e Recuperar Dados da Sessão**:
+   - Certifique-se de que os dados das sessões de leitura são armazenados corretamente.
+   - Implemente a lógica para exibir e manipular dados conforme necessário.
+
+6. **Implementar Estatísticas de Leitura**:
+   - Calcule e forneça dados úteis sobre as sessões de leitura.
+   - Exiba essas estatísticas de maneira atraente e informativa.
+
+Espero isso ajuda a organizar as suas ideias e tarefas! Se tiver mais alguma dúvida ou precisar de ajuda em alguma dessas etapas, estou aqui para ajudar! 🚀📚✨
+
+
+
+### Plano de Ação Híbrido
+1. **Pesquisar Livro por Título e Adicionar à Estante Virtual**:
+   - Finalize a lógica de busca e salvamento no backend.
+   - Implemente o frontend para permitir que o usuário pesquise e adicione livros.
+
+2. **Selecionar Livro e Definir Sessão de Leitura**:
+   - Finalize a lógica do cronômetro no backend (se necessário).
+   - Implemente o frontend para permitir que usuários definam e mostrem o tempo de leitura.
+
+3. **Salvar e Recuperar Sessões de Leitura**:
+   - Finalize as operações de salvamento e recuperação no backend.
+   - Implemente a interface para exibir essas informações.
+
+4. **Estatísticas e Modo Música**:
+   - Finalize a lógica do backend para calcular estatísticas.
+   - Implemente a interface e a integração da API de sons no frontend.
+
+Dessa forma, você terá pontos de verificação progredindo de maneira equilibrada e trazendo acredita o seu projeto de maneira visível e gratificante.
+
+Se precisar de mais alguma coisa ou tiver outras perguntas, estarei por aqui para ajudar! 🚀📚✨

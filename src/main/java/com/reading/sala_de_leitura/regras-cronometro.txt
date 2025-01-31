@@ -1,0 +1,93 @@
+As regras de controle de sessão são diretrizes ou medidas implementadas para garantir que as sessões de uso em uma aplicação operem de maneira apropriada e segura. Vamos detalhar algumas das regras comuns que você pode considerar ao desenvolver a funcionalidade de sessões de leitura na sua aplicação:
+
+### Regras Comuns de Controle de Sessão:
+
+1. **Sessão Única por Usuário**:
+   - **Prevenir Múltiplas Sessões**: Assegurar que um
+   usuário não possa iniciar várias sessões de leitura simultaneamente.
+
+   - **Exemplo**: Antes de iniciar uma nova sessão,
+   verificar se alguma sessão atual do usuário está ativa.
+
+2. **Limite de Duração de Sessão**:
+   - **Definir um Tempo Máximo**: Impor um tempo máximo para cada
+   sessão de leitura.
+   - **Exemplo**: Uma sessão de leitura não deve exceder 2 horas.
+
+4. **Persistência e Recuperação de Sessão**:
+   - **Salvar Progresso**: Salvar o estado da sessão de leitura para
+    que o usuário possa continuar de onde parou.
+   - **Exemplo**: Armazenar o tempo restante e o livro em leitura
+   para recuperação posterior.
+
+
+### Implementação de Regras de Sessão no Backend:
+
+#### Verificar Sessão Ativa:
+
+```java
+public boolean hasActiveSession(User user) {
+    // Verifique se há uma sessão ativa no banco de dados para o usuário
+    return sessionRepository.findActiveSessionByUser(user.getId()) != null;
+}
+```
+
+#### Limite de Duração de Sessão:
+
+```java
+public boolean isSessionDurationValid(LocalDateTime startTime, LocalDateTime endTime) {
+    Duration duration = Duration.between(startTime, endTime);
+    return duration.toHours() <= 2;
+}
+```
+
+#### Encerrar Sessão Inativa:
+
+```java
+@Scheduled(fixedRate = 600000) // Verifica a cada 10 minutos
+public void checkInactiveSessions() {
+    List<Session> inactiveSessions = sessionRepository.findInactiveSessions();
+    for (Session session : inactiveSessions) {
+        session.setActive(false);
+        sessionRepository.save(session);
+    }
+}
+```
+
+#### Salvando Progresso de Sessão:
+
+```java
+public void saveSessionProgress(Session session) {
+    sessionRepository.save(session);
+}
+```
+
+### Persistência e Recuperação de Sessão:
+
+Armazenar as informações necessárias para retomar a sessão de leitura permite ao usuário continuar de onde parou.
+
+#### Modelo de Sessão:
+
+```java
+@Entity
+public class Session {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @ManyToOne
+    private User user;
+
+    private Long bookId;
+    private LocalDateTime startTime;
+    private LocalDateTime endTime;
+    private boolean isActive;
+    private int timeLeft; // em segundos
+
+    // Getters e Setters
+}
+```
+
+Com essas regras e implementações, sua aplicação ficará mais robusta e segura, proporcionando uma boa experiência de usuário ao gerenciar sessões de leitura.
+
+Se tiver outras dúvidas ou precisar de mais ajuda, estarei por aqui! 🚀📚✨
