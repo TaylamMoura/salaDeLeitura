@@ -6,7 +6,7 @@ import com.google.gson.JsonParser;
 import com.reading.sala_de_leitura.dto.LivroDTO;
 import com.reading.sala_de_leitura.entity.Livro;
 import com.reading.sala_de_leitura.repository.LivroRepository;
-import com.reading.sala_de_leitura.service.validation.ValidadorExistencia;
+import jakarta.validation.ValidationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class LivroService {
@@ -21,8 +22,8 @@ public class LivroService {
     private final ConexaoAPI conexaoAPI;
     private final LivroRepository repository;
 
-    @Autowired
-    private ValidadorExistencia<LivroDTO> validadorAdicionarNoBD;
+//    @Autowired
+//    private ValidadorExistencia<LivroDTO> validadorAdicionarNoBD;
 
     @Autowired
     public LivroService(ConexaoAPI conexaoAPI, LivroRepository repository) {
@@ -60,7 +61,7 @@ public class LivroService {
 
     @Transactional
     public void salvarLivro(LivroDTO livroDTO){
-        validadorAdicionarNoBD.validar(livroDTO);
+//        validadorAdicionarNoBD.validar(livroDTO);
 
         Livro livro =new Livro(null, livroDTO.titulo(), livroDTO.autor(), livroDTO.paginas(), livroDTO.urlCapa(), livroDTO.anoPublicacao());
         repository.save(livro);
@@ -69,6 +70,29 @@ public class LivroService {
     public List<LivroDTO> exibirLivrosSalvos(){
         List<Livro> livros = repository.findAll();
         return livros.stream().map(livro -> new LivroDTO(livro)).toList();
+    }
+
+    @Transactional
+    public void deletarLivro(Long id){
+        if (repository.existsById(id)){
+            repository.deleteById(id);
+        } else{
+            throw new ValidationException("Livro não escontrado");
+        }
+    }
+
+    @Transactional
+    public Livro editarLivro(Long id, AtualizarLivro atualizarDados) {
+
+        Optional<Livro> optionalLivro = repository.findById(id);
+        if (optionalLivro.isPresent()){
+            var livro = optionalLivro.get();
+            livro.atualizar(atualizarDados);
+            repository.save(livro);
+            return livro;
+        } else{
+            throw new ValidationException("Atualizações não foram salvas");
+        }
     }
 }
 
