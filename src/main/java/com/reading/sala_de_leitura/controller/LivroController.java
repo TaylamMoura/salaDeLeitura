@@ -49,9 +49,22 @@ public class LivroController {
         }
     }
 
+    //Exibir na Página Inicial
     @GetMapping("/livrosSalvos")
     public List<LivroDTO> exibirLivros() {
         return service.exibirLivrosSalvos();
+    }
+
+    //Funções que aparecerão na página livro-info.html
+
+    @GetMapping("/exibirDados/{id}")
+    public ResponseEntity<LivroDTO> exibirDados(@PathVariable Long id){
+        LivroDTO livroDTO = service.exibirDadosLivro(id);
+        if (livroDTO != null) {
+            return ResponseEntity.ok(livroDTO);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @Transactional
