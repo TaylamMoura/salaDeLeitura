@@ -94,6 +94,11 @@ public class LivroService {
             throw new ValidationException("Atualizações não foram salvas");
         }
     }
+
+    public LivroDTO exibirDadosLivro(Long id) {
+        Optional<Livro> livro = repository.findById(id);
+        return livro.map(LivroDTO::new).orElse(null);
+    }
 }
 
 //Essa classe vai retornar um DTO para encapsular os dados basicos que serão exebidos
