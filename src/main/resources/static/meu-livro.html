@@ -6,8 +6,16 @@
   <link rel="stylesheet" href="css/styles.css">
   <title>Minha Leitura</title>
 </head>
-
 <body>
+  <h3>Sala de Leitura </h3>
+  <h3>Lectio</h3>
+  <div class="botoes-dir">
+    <button onclick="editarInfoLivro()" type="button" id="editar-info-livro">Editar</button>
+    <button onclick="excluirLivro()" type="button" id="excluir-livro">Excluir</button>
+    <button onclick="favoritos()" type="button" id="livros_favoritos">favoritos</button>
+  </div>
+
+  <button onclick="pagInicial()" type="button" id="voltar-pag-inicial">Voltar</button>
 
   <h2>Minha Leitura</h2>
   <div class="livro-informacao">
@@ -16,22 +24,10 @@
 
   <p id="tituloLivro">Livro: </p>
   <p id="autorLivro">Autor: </p>
-  <p id="paginasLivro">Páginas </p>
+  <p id="paginasLivro">Páginas: </p>
+  <p id="anoPublicacao">Ano: </p>
 
-  <button onclick="iniciarSessao()" type="button" id="iniciar-sessao"">Iniciar sessão</button>
-  <button onclick="window.location.href='temporizador.html'">Iniciar Sessão</button>
-
-  <script>
-    //Carrega os detalhes do livro do localStorage
-    const livroSelecionado = JSON.parse(localStorage.getItem('livroSelecionado'));
-
-    if (livroSelecionado) {
-        document.getElementById('capaLivro').src = livroSelecionado.capa;
-        document.getElementById('tituloLivro').textContent = `Livro: ${livroSelecionado.titulo}`;
-        document.getElementById('autorLivro').textContent = `Autor: ${livroSelecionado.autor}`;
-        document.getElementById('paginasLivro').textContent = `Páginas: ${livroSelecionado.paginas}`;
-    }
-  </script>
-
+  <script src="js/livro-info.js"></script>
 </body>
 </html>
+
