@@ -1,5 +1,6 @@
 package com.reading.sala_de_leitura.entity;
 
+import com.reading.sala_de_leitura.service.AtualizarLivro;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -28,4 +29,13 @@ public class Livro {
     @Column(name = "ano_publicacao")
     private int anoPublicacao;
 
+    public void atualizar(AtualizarLivro dados) {
+        if(dados.paginas() != 0){
+            this.paginas = dados.paginas();
+        }
+
+        if (dados.anoPublicacao() != 0 && String.valueOf(dados.anoPublicacao()).length() <= 4){
+            this.anoPublicacao = dados.anoPublicacao();
+        }
+    }
 }
