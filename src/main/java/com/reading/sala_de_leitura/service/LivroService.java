@@ -69,7 +69,7 @@ public class LivroService {
 
     public List<LivroDTO> exibirLivrosSalvos(){
         List<Livro> livros = repository.findAll();
-        return livros.stream().map(livro -> new LivroDTO(livro)).toList();
+        return livros.stream().map(LivroDTO::new).toList();
     }
 
     @Transactional
