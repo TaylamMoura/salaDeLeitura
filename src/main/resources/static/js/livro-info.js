@@ -49,6 +49,11 @@ function mostrarFormularioEdicao() {
   document.getElementById('formulario-edicao').style.display = 'block';
 }
 
+// Função para fechar o formulário de edição
+function fecharFormularioEdicao() {
+  document.getElementById('formulario-edicao').style.display = 'none';
+}
+
 // Função para enviar a edição do livro ao servidor
 async function enviarEdicaoLivro() {
   const id = obterIdLivro();
@@ -85,4 +90,40 @@ async function enviarEdicaoLivro() {
 // Função para cancelar a edição
 function cancelarEdicao() {
   document.getElementById('formulario-edicao').style.display = 'none';
+}
+
+// Função para mostrar o modal de confirmação de exclusão
+function mostrarConfirmacaoExclusao() {
+  document.getElementById('confirmacaoExclusaoModal').style.display = 'block';
+}
+
+// Função para fechar o modal de confirmação de exclusão
+function fecharConfirmacaoExclusao() {
+  document.getElementById('confirmacaoExclusaoModal').style.display = 'none';
+}
+
+// Função para excluir o livro após confirmação
+async function excluirLivroConfirmado() {
+  const id = obterIdLivro();
+
+  try {
+    const response = await fetch(`/excluirLivro/${id}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+
+    if (!response.ok) {
+      throw new Error('Erro ao excluir o livro');
+    }
+
+    alert('Livro excluído com sucesso!');
+    window.location.href = 'index.html'; // Redireciona para a página inicial após a exclusão
+  } catch (error) {
+    console.error('Erro ao excluir o livro:', error);
+    alert('Erro ao excluir o livro.');
+  } finally {
+    fecharConfirmacaoExclusao(); // Fecha o modal de confirmação após a tentativa de exclusão
+  }
 }
