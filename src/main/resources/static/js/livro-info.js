@@ -43,3 +43,46 @@ async function exibirInformacoesLivro() {
 
 // Chama a função para exibir as informações do livro ao carregar a página
 window.onload = exibirInformacoesLivro;
+
+// Função para mostrar o formulário de edição
+function mostrarFormularioEdicao() {
+  document.getElementById('formulario-edicao').style.display = 'block';
+}
+
+// Função para enviar a edição do livro ao servidor
+async function enviarEdicaoLivro() {
+  const id = obterIdLivro();
+  const paginas = document.getElementById('inputPaginas').value;
+  const anoPublicacao = document.getElementById('inputAnoPublicacao').value;
+
+  const dadosAtualizados = {
+    paginas: paginas,
+    anoPublicacao: anoPublicacao
+  };
+
+  try {
+    const response = await fetch(`/editarLivro/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(dadosAtualizados)
+    });
+
+    if (!response.ok) {
+      throw new Error('Erro ao atualizar o livro');
+    }
+
+    // Atualize as informações do livro na página após a edição
+    exibirInformacoesLivro();
+    document.getElementById('formulario-edicao').style.display = 'none';
+  } catch (error) {
+    console.error('Erro ao atualizar o livro:', error);
+    alert('Erro ao atualizar o livro.');
+  }
+}
+
+// Função para cancelar a edição
+function cancelarEdicao() {
+  document.getElementById('formulario-edicao').style.display = 'none';
+}

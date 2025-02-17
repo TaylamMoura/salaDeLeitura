@@ -10,7 +10,7 @@
   <h3>Sala de Leitura </h3>
   <h3>Lectio</h3>
   <div class="botoes-dir">
-    <button onclick="editarInfoLivro()" type="button" id="editar-info-livro">Editar</button>
+    <button onclick="mostrarFormularioEdicao()" type="button" id="editar-info-livro">Editar</button>
     <button onclick="excluirLivro()" type="button" id="excluir-livro">Excluir</button>
     <button onclick="favoritos()" type="button" id="livros_favoritos">favoritos</button>
   </div>
@@ -26,6 +26,20 @@
   <p id="autorLivro">Autor: </p>
   <p id="paginasLivro">Páginas: </p>
   <p id="anoPublicacao">Ano: </p>
+
+  <div id="formulario-edicao" style="display:none;">
+    <h3>Edite as Informações do Livro </h3>
+    <form id="formEdicaoLivro">
+      <label for="inputPaginas">Páginas:</label>
+      <input type="number" id="inputPaginas" name="paginas"><br>
+
+      <label for="inputAnoPublicacao">Ano de Publicação:</label>
+      <input type="number" id="inputAnoPublicacao" name="anoPublicacao"><br>
+
+      <button type="button" onclick="enviarEdicaoLivro()">Salvar</button>
+      <button type="button" onclick="cancelarEdicao()">Cancelar</button>
+    </form>
+  </div>
 
   <script src="js/livro-info.js"></script>
 </body>
