@@ -1,6 +1,37 @@
-body {
-    background-color: burlywood;
 
+@import url('https://fonts.googleapis.com/css2?family=Tenor+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bad+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap');
+
+:root {
+    --fonte-titulo-pag: "Abril Fatface", serif; /*sala de leitura*/
+    --fonte-logotipo: "Cinzel", serif; /*Lectio*/
+    --fonte-titulo-livro: "Cormorant Garamond", serif; /*livros da pag inicial*/
+    --fonte-principal: "Courier Prime", serif; /*da pagina meu-livro*/
+    --fonte-botao:  "Montserrat Alternates", serif;
+
+    --cor-fundo: #E6C767;
+    --cor-fundo2: #638C6D;
+    --cor-rodape: #C84C05;
+    --cor=botao: #F8F5E9;
+    --cor-modal: #F8F5E9;
+
+
+
+}
+
+
+body {
+    background-color: var(--cor-fundo2);
+
+}
+.footer {
+    background-color: var(--cor-rodape);
 }
 
 .grid-container {
@@ -26,8 +57,9 @@ body {
   width: 100%; /* Largura completa */
   height: 100%; /* Altura completa */
   overflow: auto; /* Habilita rolagem se necessário */
-  background-color: rgb(0,0,0); /* Fundo preto */
-  background-color: rgba(0,0,0,0.4); /* Fundo com transparência */
+  /*background-color: rgb(0,0,0); /* Fundo preto */
+ /* background-color: rgba(0,0,0,0.4); /* Fundo com transparência */
+    background-color: var(--cor-modal);
 }
 
 /* Conteúdo da modal */
