@@ -12,12 +12,14 @@
     <h2>Sala de Leitura</h2>
     <form id="buscarLivroForm" onsubmit="return false;">
         <input type="text" id="tituloLivro" placeholder="Digite o título do livro">
-        <button type="submit">Buscar</button>
+        <button id="botao-buscar" type="submit">
+            <img src="img/Search.png" alt="Buscar">
+        </button>
     </form>
 
     <div class="minhas-leituras-container">
-        <h4>Minhas Leituras</h4>
-        <div id="minhasLeituras">
+        <h4 class="titulo-secundario">Minhas Leituras</h4>
+        <div id="minhasLeituras" class="livros-container">
             <!-- Capas dos livros adicionadas pelo usuário -->
 
         </div>
@@ -32,4 +34,7 @@
     </div>
     <script src="js/app.js"></script>
 </body>
+<footer>
+    <p>taylam moura</p>
+</footer>
 </html>

@@ -10,26 +10,42 @@
   <h3>Sala de Leitura </h3>
   <h3>Lectio</h3>
   <div class="botoes-dir">
-    <button onclick="mostrarFormularioEdicao()" type="button" id="editar-info-livro">Editar</button>
-    <button onclick="mostrarConfirmacaoExclusao() " type="button" id="excluir-livro">Excluir</button>
-    <button onclick="favoritos()" type="button" id="livros_favoritos">favoritos</button>
+    <button onclick="mostrarFormularioEdicao()" type="button" id="editar-info-livro">
+      <img src="img/Edit%207.png">
+    </button>
+    
+    <button onclick="mostrarConfirmacaoExclusao() " type="button" id="excluir-livro">
+      <img src="img/delete.png">
+    </button>
+    <button onclick="favoritos()" type="button" id="livros_favoritos">
+      <img src="img/favorite.png">
+    </button>
   </div>
 
-  <a href="index.html" class="botao-voltar">Voltar</a>
-  <!-- PARA SUBSTITUIR POR IMAGEM
   <a href="index.html" class="botao-voltar">
-    <img src="imagens/voltar.png" alt="Voltar" style="width:50px; height:50px;">
-  </a>    -->
+    <img src="img/arrow_back.png">
+  </a>
 
   <h2>Minha Leitura</h2>
   <div class="livro-informacao">
     <img id="capaLivro" alt="Capa do livro">
   </div>
 
-  <p id="tituloLivro">Livro: </p>
-  <p id="autorLivro">Autor: </p>
-  <p id="paginasLivro">Páginas: </p>
-  <p id="anoPublicacao">Ano: </p>
+  <p id="tituloLivro">
+    <img src="img/Book.png">
+  </p>
+
+  <p id="autorLivro">
+    <img src="img/person.png">
+  </p>
+
+  <p id="paginasLivro">
+    <img src="img/Pen%20tool.png">
+  </p>
+  
+  <p id="anoPublicacao">
+    <img src="img/Calendar.png">
+  </p>
 
   <!--Modal para Editar Livro -->
   <div id="formulario-edicao" class="modal" style="display:none;">
