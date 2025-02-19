@@ -61,6 +61,7 @@ document.getElementById('buscarLivroForm').onsubmit = async function(event) {
       console.log('URL da Capa:', capaLivro);
 
       const livroDiv = document.createElement('div');
+      livroDiv.className = 'livro-item';
       livroDiv.innerHTML = `<img src="${capaLivro}" alt="${tituloLivro}"><p>${tituloLivro}</p>`;
 
       // Adiciona um evento de clique ao livro para salvá-lo no banco de dados
