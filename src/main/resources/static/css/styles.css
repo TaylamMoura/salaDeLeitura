@@ -11,29 +11,96 @@
 :root {
     --fonte-titulo-pag: "Abril Fatface", serif; /*sala de leitura*/
     --fonte-logotipo: "Cinzel", serif; /*Lectio*/
-    --fonte-titulo-livro: "Cormorant Garamond", serif; /*livros da pag inicial*/
+    --fonte-titulo-livro: "Tenor Sans", serif; /*livros da pag inicial*/
     --fonte-principal: "Courier Prime", serif; /*da pagina meu-livro*/
     --fonte-botao:  "Montserrat Alternates", serif;
 
     --cor-fundo: #E6C767;
     --cor-fundo2: #638C6D;
     --cor-rodape: #C84C05;
-    --cor=botao: #F8F5E9;
+    --cor-botao: #F8F5E9;
     --cor-modal: #F8F5E9;
-
-
-
+    
+    /*--cor-modal: rgba(0, 0, 0, 0.5);*/
 }
 
+/* personalizar class = .nome
+   personalizar id = #nome
+   width = largura
+   height = altura*/
 
 body {
     background-color: var(--cor-fundo2);
-
-}
-.footer {
-    background-color: var(--cor-rodape);
+    padding-left: 5px;
+    padding: 10px;
 }
 
+
+a {
+  text-decoration: none; /*remove barra de link de toda a pagina */
+}
+
+.livros-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 10px;
+  padding-left: 100px;
+
+}
+
+/*barra de pesquisa*/
+#tituloLivro{
+  border-radius: 10px;
+  background-color: #F8F5E9;
+  height: 30px;
+  right: 0;
+  margin-right: 80px;
+  border: 0px ;
+  position: absolute;
+}
+
+#botao-buscar {
+  position: absolute;
+  right: 0;
+  margin-right: 20px;
+}
+
+/* Item do livro */
+.livro-item {
+  flex: 1 1 calc(20% - 10px); /* 20% da largura menos o gap */
+  box-sizing: border-box;
+  margin-bottom: 20px;
+}
+
+/*Fonte do Título do Livro*/
+.livro-item p {
+  font-family: var(--fonte-titulo-livro);
+  color: black; /* Define a cor da fonte */
+  margin-top: 10px; /* Espaço acima do nome do livro */
+  white-space: pre-wrap; /*quebra o titulo para nao passar o livro*/
+  overflow-wrap: break-word;
+  max-width: 100px;
+}
+
+.livro-item img {
+  width: 130px; /*largura*/
+  height: 180px; /*altura*/
+  max-width: 130px;
+  display: block;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  
+}
+
+.titulo-secundario{
+  font-family: var(--fonte-titulo-livro);
+  font-size: 25px;
+}
+
+footer{
+  background-color: var(--cor-rodape);
+}
 .grid-container {
     display: flex;
     flex-direction: column;
@@ -50,26 +117,29 @@ body {
 /* Estilo para a janela modal */
 .modal {
   display: none; /* Oculta a modal por padrão */
-  position: fixed; /* Fica fixa na tela */
+  position:fixed; /* Fica fixa na tela */
   z-index: 1; /* Fica acima de outros elementos */
   left: 0;
   top: 0;
   width: 100%; /* Largura completa */
   height: 100%; /* Altura completa */
   overflow: auto; /* Habilita rolagem se necessário */
-  /*background-color: rgb(0,0,0); /* Fundo preto */
- /* background-color: rgba(0,0,0,0.4); /* Fundo com transparência */
-    background-color: var(--cor-modal);
+
+  padding-top: 20px;
 }
 
 /* Conteúdo da modal */
 .modal-content {
-  background-color: #fefefe;
+  background-color: var(--cor-modal);
   margin: 15% auto; /* Centraliza verticalmente */
   padding: 20px;
   border: 1px solid #888;
   width: 80%; /* Largura da modal */
-  overflow-y:
+  max-width: 600px; /* Largura máxima */
+
+  border-radius: 15px; /* Cantos arredondados */
+  box-shadow: 0 4px 8px #F8F5E9;
+
 }
 
 /* Botão de fechar a modal */
