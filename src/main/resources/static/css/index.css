@@ -1,0 +1,95 @@
+import url('styles.css');
+
+.livros-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 10px;
+  padding-left: 100px;
+
+}
+
+#minhasLeituras {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+/*
+.grid-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}*/
+
+.titulo__secundario{
+  font-family: var(--fonte-titulo-livro);
+  font-size: 25px;
+  padding-left: 25px;
+  font-weight: 200;
+}
+
+
+/*barra de pesquisa*/
+.tituloLivro {
+  border-radius: 10px;
+  background-color: #F8F5E9;
+  height: 30px;
+  width: 300px;
+  right: 0;
+  margin-right: 80px;
+  border: 0px ;
+  position: absolute;
+  padding-left: 10px;
+  font-size: 15px;
+  top: 150px;
+}
+
+#botao-buscar {
+  position: absolute;
+  right: 0;
+  margin-right: 25px;
+  top: 140px;
+  border-radius: 5px;
+  background-color: #638C6D;
+  border: none;
+  cursor: pointer;
+}
+
+
+#resultadoBusca {
+    max-height: 80vh;
+    overflow-y: auto;
+    padding: 20px;
+    background-color: var(--cor-modal);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+/* Item do livro */
+.livro-item {
+  flex: 1 1 calc(20% - 10px); /* 20% da largura menos o gap */
+  box-sizing: border-box;
+  margin-bottom: 20px;
+}
+
+/*Fonte do Título do Livro*/
+.livro-item p {
+  font-family: var(--fonte-titulo-livro);
+  color: black; /* Define a cor da fonte */
+  margin-top: 10px; /* Espaço acima do nome do livro */
+  white-space: pre-wrap; /*quebra o titulo para nao passar o livro*/
+  overflow-wrap: break-word;
+  max-width: 100px;
+}
+
+.livro-item img {
+  width: 130px; /*largura*/
+  height: 180px; /*altura*/
+  max-width: 130px;
+  display: block;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+}
