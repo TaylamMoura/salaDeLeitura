@@ -8,7 +8,7 @@
     <title>Minha Leitura</title>
 </head>
 <body>
-  <header>
+  <header onload="exibirInformacoesLivro()">
     <img id="logotipo" src="img/logotipo.png" alt="logotipo">
     <h2 id="titulo-logo">Sala de Leitura</h2>
 </header>
@@ -35,24 +35,33 @@
         <div class="livro-capa">
             <img id="capaLivro" src="img/capa-livro.png" alt="Capa do livro">
         </div>
-        <div class="livro-informacao">
+        
+        <div class="info-bloco-geral">
+            <div class="info-bloco">
+                <span class="label">Livro</span>
+                <img id="tituloLivroImg" src="img/Book.png" alt="Título do Livro" class="livro-info-img">
+                <p id="tituloLivro"></p>
+            </div>
+    
+            <div class="info-bloco">
+                <span class="label">Autor</span>
+                <img id="autorLivroImg" src="img/person.png" alt="Autor do Livro" class="livro-info-img">
+                <p id="autorLivro"></p>
+            </div>
+            <div class="info-bloco">
+                <span class="label">Páginas</span>
+                <img id="paginasLivroImg" src="img/Pen tool.png" alt="Páginas do Livro" class="livro-info-img">
+                <p id="paginasLivro"></p>
+            </div>
+            <div class="info-bloco">
+                <span class="label">Ano</span>
+                <img id="anoPublicacaoImg" src="img/Calendar.png" alt="Ano de Publicação" class="livro-info-img">
+                <p id="anoPublicacao"></p>
+            </div>
 
-          <p id="tituloLivro">
-            <img src="img/Book.png" alt="Título do Livro"> Título do Livro
-          </p>
-
-            <p id="autorLivro">
-                <img src="img/person.png" alt="Autor do Livro"> Autor do Livro
-            </p>
-
-            <p id="paginasLivro">
-                <img src="img/Pen tool.png" alt="Páginas do Livro"> Número de Páginas
-            </p>
-            
-            <p id="anoPublicacao">
-                <img src="img/Calendar.png" alt="Ano de Publicação"> Ano de Publicação
-            </p>
         </div>
+        
+
     </div>
 
     <div class="container-botao-sessao">
