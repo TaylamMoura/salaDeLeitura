@@ -156,6 +156,7 @@ async function adicionarLivroAoBanco(livro) {
     adicionarLivroNaPagina(novoLivro);
     // Fecha a janela modal
     document.getElementById('resultadoModal').style.display = 'none';
+    window.location.reload();
   } catch (error) {
     console.error('Erro ao adicionar livro ao banco de dados:', error);
   }
