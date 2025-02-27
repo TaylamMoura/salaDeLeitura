@@ -7,6 +7,7 @@ import url('styles.css');
   gap: 10px;
   padding-left: 100px;
 
+
 }
 
 #minhasLeituras {
@@ -14,13 +15,9 @@ import url('styles.css');
     flex-wrap: wrap;
     justify-content: center;
     gap: 10px;
+    margin-left: 60px;
+    margin-top: 5px;
 }
-/*
-.grid-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}*/
 
 .titulo__secundario{
   font-family: var(--fonte-titulo-livro);
@@ -33,23 +30,24 @@ import url('styles.css');
 /*barra de pesquisa*/
 .tituloLivro {
   border-radius: 10px;
-  background-color: #F8F5E9;
+  background-color: #FAEED1;
   height: 30px;
   width: 300px;
   right: 0;
   margin-right: 80px;
+  margin-top: 0px;
   border: 0px ;
   position: absolute;
   padding-left: 10px;
   font-size: 15px;
-  top: 150px;
+  top: 90px;
 }
 
 #botao-buscar {
   position: absolute;
   right: 0;
   margin-right: 25px;
-  top: 140px;
+  top: 93px;
   border-radius: 5px;
   background-color: #638C6D;
   border: none;
@@ -82,6 +80,7 @@ import url('styles.css');
   white-space: pre-wrap; /*quebra o titulo para nao passar o livro*/
   overflow-wrap: break-word;
   max-width: 100px;
+  text-align: center;
 }
 
 .livro-item img {
@@ -91,5 +90,6 @@ import url('styles.css');
   display: block;
   border-radius: 5px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding-top: 15px;
 
 }

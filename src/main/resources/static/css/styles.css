@@ -1,57 +1,61 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Tenor+Sans&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Bad+Script&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap');
-
-@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Ms+Madi&display=swap');
 
 
 :root {
 
     --fonte-titulo-pag:  "Ms Madi", serif; /*sala de leitura*/
-    --fonte-logotipo: "Cinzel", serif; /*Lectio*/
     --fonte-titulo-livro: "Tenor Sans", serif; /*livros da pag inicial*/
     --fonte-principal: "Courier Prime", serif; /*da pagina meu-livro*/
     --fonte-botao:  "Montserrat Alternates", serif;
 
     --cor-fundo: #E6C767;
+    /*--cor-fundo2:#FFF2C2;*/
     --cor-fundo2: #638C6D;
     --cor-rodape: #C84C05;
     --cor-botao: #F8F5E9;
-    --cor-modal: #F8F5E9;
+    --cor-modal: #E0E5B6;
     --cor-hover: #C84C05;
+    --cor-barra-rolagem:#638C6D;
+    --cor-thumb-rolagem: #F8F0E5;
 }
 
 
 header{
   display: flex;
+  border-bottom: 1px solid #6d6969;
+  padding-bottom: 0;
+  margin: 0 ;
+
 }
 
 #logotipo {
-  width: 100px; 
-  height: 100px; 
+  width: 70px; 
+  height: 70px; 
   object-fit: cover; /* Garante que a imagem seja cortada corretamente dentro do container */
   border-radius: 50%; /* Torna a imagem circular */
+  margin: 0;
 }
 
 #titulo-logo {
   font-family: var(--fonte-titulo-pag);
-  font-size: 50px;
-  padding-left: 30px;
+  font-size: 30px;
   font-weight: 400;
-  
+  padding: 0;
+  margin: 20px;
+  margin-bottom: 0;
+  margin-left: 1px;
+ 
+  /*color: #C84C05;*/
 }
 
 body {
     background-color: var(--cor-fundo2);
-    padding-left: 5px;
-    padding: 20px;
+    padding: 5px;
+    margin: 1px;
 }
 
 
@@ -101,4 +105,20 @@ a {
   color: black;
   text-decoration: none;
   cursor: pointer;
+}
+
+
+/* Estiliza a barra de rolagem para navegadores baseados em WebKit (Chrome, Safari) */
+::-webkit-scrollbar {
+  width: 10px; /* Largura da barra de rolagem vertical */
+  height: 10px; /* Altura da barra de rolagem horizontal */
+}
+
+::-webkit-scrollbar-track {
+  background: var(--cor-barra-rolagem); /* Cor da trilha da barra de rolagem */
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--cor-thumb-rolagem); /* Cor do thumb (parte que se move) da barra de rolagem */
+  border-radius: 10px; /* Bordas arredondadas */
 }

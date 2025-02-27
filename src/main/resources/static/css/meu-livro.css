@@ -5,6 +5,13 @@ import url('styles.css');
   font-family: var(--fonte-principal);
 }
 
+.grid-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
 /* BOTAO EDITAR, DELETAR E FAVORITAR */
 .botao {
   top: 90px;
@@ -33,21 +40,78 @@ import url('styles.css');
   gap: 30px;
 }
 
+.botao-voltar{
+ display: flex;
+ padding: 15px;
+ padding-top: 15px;
+}
+
+
 /*PAG MEU-LIVRO*/
 .livro-container {
   display: flex;
+  justify-content: flex-start; 
   align-items: flex-start;
   border-radius: 10px;
+  padding: 10px;
+  flex-wrap: wrap;
+}
+
+.info-bloco-geral{
+  display: flex;
+  justify-content: flex-start; /* Alinha os blocos à esquerda */
+  flex-wrap: wrap; /* Permite quebra de linha se necessário */
+  gap: 10px; /* Reduz o espaçamento entre os blocos */
+
+}
+.info-bloco {
+  display: flex;
+  flex-direction: column; /* Coloca os itens um abaixo do outro */
+  align-items: center; /* Centraliza os itens */
+  text-align: center;
+  margin: 0 1px; /* Espaçamento entre os blocos */
+  flex: 1;
+  gap:10px;
+  margin-left: 50px;
+  padding-top: 18px;
+  font-size: 15px;
+}
+
+.info-bloco-geral{
+  gap:1px
+}
+
+.label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  font-family: var(--fonte-principal);
+  margin: 0;
+}
+
+.livro-info-img {
+  width: 24px; /* Ajuste o tamanho conforme necessário */
+  height: 24px;
+  margin-bottom: 2px; /* Espaçamento entre a imagem e o texto */
+}
+
+.info-bloco p {
+  margin: 0;
+  font-family: var(--fonte-principal);
+  line-height: 1.2;
+}
+
+.livro-capa {
+  margin-top: 20px; /* Ajuste conforme necessário */
 }
 
 .livro-capa img {
-  width: 200px;
+  width: 150px;
   height: auto;
   margin-left: 20px;
   border-radius: 10px;
-  justify-content: left;
 
 }
+
 
 .livro-informacao {
   display: flex;
@@ -56,7 +120,11 @@ import url('styles.css');
   padding-top: 40px;
   font-family: var(--fonte-principal);
   gap: 30px;
+  font-size: 20px;
+  line-height: 0.2;
 }
+
+
 
 .livro-informacao p {
   display: flex;
@@ -64,11 +132,12 @@ import url('styles.css');
   margin: 10px 0; /* Espaçamento vertical entre as linhas */
   padding-left: 20px;
   border: none;
-  background-color: transparent;
+  /*background-color: transparent;*/
+
 }
 
 .livro-informacao__img img {
-  width: 20px; /* Tamanho das imagens dos ícones */
+  width: 25px; /* Tamanho das imagens dos ícones */
   height: auto;
   margin-right: 20px; /* Espaçamento entre a imagem e o texto */
 }
