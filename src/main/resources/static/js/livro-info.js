@@ -25,18 +25,6 @@ async function exibirInformacoesLivro() {
     if (id) {
       const livro = await buscarLivroPorId(id);
       if (livro) {
-        /*document.getElementById('capaLivro').src = livro.urlCapa;
-        document.getElementById('tituloLivro').textContent = `Livro: ${livro.titulo}`;
-        document.getElementById('autorLivro').textContent = `Autor: ${livro.autor}`;
-        document.getElementById('paginasLivro').textContent = `Páginas: ${livro.paginas}`;
-        document.getElementById('anoPublicacao').textContent = `Ano: ${livro.anoPublicacao}`;
-
-        document.getElementById('capaLivro').src = livro.urlCapa;
-        document.getElementById('tituloLivro').innerHTML = `<img src="img/Book.png" alt="Título do Livro" class="livro-info-img"> : ${livro.titulo}`;
-        document.getElementById('autorLivro').innerHTML = `<img src="img/person.png" alt="Autor do Livro" class="livro-info-img"> : ${livro.autor}`;
-        document.getElementById('paginasLivro').innerHTML =  `<img src="img/Pen tool.png" alt="Páginas do Livro" class="livro-info-img"> : ${livro.paginas}`;
-        document.getElementById('anoPublicacao').innerHTML =  `<img src="img/Calendar.png" alt="Ano de Publicação" class="livro-info-img"> : ${livro.anoPublicacao}`;
-        */
         document.getElementById('capaLivro').src = livro.urlCapa;
         document.getElementById('tituloLivro').innerHTML = ` ${livro.titulo}`;
         document.getElementById('autorLivro').innerHTML = ` ${livro.autor}`;
@@ -131,11 +119,11 @@ async function excluirLivroConfirmado() {
     }
 
     alert('Livro excluído com sucesso!');
-    window.location.href = 'index.html'; // Redireciona para a página inicial após a exclusão
+    window.location.href = 'index.html';
   } catch (error) {
     console.error('Erro ao excluir o livro:', error);
     alert('Erro ao excluir o livro.');
   } finally {
-    fecharConfirmacaoExclusao(); // Fecha o modal de confirmação após a tentativa de exclusão
+    fecharConfirmacaoExclusao();
   }
 }

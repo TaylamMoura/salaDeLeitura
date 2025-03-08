@@ -14,7 +14,6 @@ public class ConexaoAPI {
     @Value("${google.api.key}")
     private static String API_KEY ;
     private static final String BASE_URL = "https://www.googleapis.com/books/v1/volumes?q=";
-    //"https://www.googleapis.com/books/v1/volumes?q=" + titulo + "&key=" + API_KEY;
 
     public String livrosJson(String query) throws Exception {
         String apiUrl = BASE_URL + query + "&key=" + API_KEY;

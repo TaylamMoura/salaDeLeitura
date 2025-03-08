@@ -22,9 +22,6 @@ public class LivroService {
     private final ConexaoAPI conexaoAPI;
     private final LivroRepository repository;
 
-//    @Autowired
-//    private ValidadorExistencia<LivroDTO> validadorAdicionarNoBD;
-
     @Autowired
     public LivroService(ConexaoAPI conexaoAPI, LivroRepository repository) {
         this.conexaoAPI = conexaoAPI;
@@ -36,11 +33,11 @@ public class LivroService {
             String tituloEncoded = URLEncoder.encode("intitle:" + titulo, StandardCharsets.UTF_8.toString());
             String jsonResponse = conexaoAPI.livrosJson(tituloEncoded);
 
-            JsonObject jsonObject = JsonParser.parseString(jsonResponse).getAsJsonObject(); //analizar e converte um objeto em json
+            JsonObject jsonObject = JsonParser.parseString(jsonResponse).getAsJsonObject();
             JsonArray items = jsonObject.getAsJsonArray("items");
 
             if (items != null && !items.isEmpty()) {
-                JsonObject volumeInfo = items.get(0).getAsJsonObject().getAsJsonObject("volumeInfo"); // converte o item em um jsonObject
+                JsonObject volumeInfo = items.get(0).getAsJsonObject().getAsJsonObject("volumeInfo");
                 String title = volumeInfo.get("title").getAsString();
                 String author = volumeInfo.getAsJsonArray("authors").get(0).getAsString();
                 int pageCount = volumeInfo.get("pageCount").getAsInt();
@@ -54,14 +51,13 @@ public class LivroService {
                 return null;
             }
         } catch (Exception e) {
-            e.printStackTrace(); // MUDAR AQUI POR ALGO MELHOR
+            e.printStackTrace();
             return null;
         }
     }
 
     @Transactional
     public void salvarLivro(LivroDTO livroDTO){
-//        validadorAdicionarNoBD.validar(livroDTO);
 
         Livro livro =new Livro(null, livroDTO.titulo(), livroDTO.autor(), livroDTO.paginas(), livroDTO.urlCapa(), livroDTO.anoPublicacao());
         repository.save(livro);
@@ -100,6 +96,3 @@ public class LivroService {
         return livro.map(LivroDTO::new).orElse(null);
     }
 }
-
-//Essa classe vai retornar um DTO para encapsular os dados basicos que serão exebidos
-// para o usuario.

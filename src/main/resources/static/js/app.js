@@ -1,5 +1,3 @@
-// --> TIRAR OS CONSOLE.LOG DEPOIS
-
 
 // CONFIG APIKEY
 async function fetchApiKey() {
@@ -47,12 +45,12 @@ const defaultImageUrl = 'https://via.placeholder.com/150x150';
 document.getElementById('buscarLivroForm').onsubmit = async function(event) {
   event.preventDefault();
   const titulo = document.getElementById('tituloLivro').value;
-  console.log('Título:', titulo); // Verifica o título inserido pelo usuário
+  console.log('Título:', titulo);
 
   const livros = await buscarLivroPorTitulo(titulo);
-  console.log('Livros:', livros); // Verifica os livros retornados pela API
+  console.log('Livros:', livros);
   const resultadoDiv = document.getElementById('resultadoBusca');
-  resultadoDiv.innerHTML = ''; // Limpa resultados anteriores
+  resultadoDiv.innerHTML = '';
 
   if (livros) {
     livros.forEach(livro => {
@@ -85,7 +83,7 @@ document.getElementById('buscarLivroForm').onsubmit = async function(event) {
   }
 
   console.log('Exibindo modal');
-  document.getElementById('resultadoModal').style.display = 'block'; // Exibe o modal
+  document.getElementById('resultadoModal').style.display = 'block';
 };
 
 
@@ -96,11 +94,10 @@ function adicionarLivroNaPagina(livro) {
     const capaLivro = livro.urlCapa ? livro.urlCapa : defaultImageUrl;
 
     const livroDiv = document.createElement('div');
-    livroDiv.classList.add('livro-item'); // Adiciona uma classe para o estilo
+    livroDiv.classList.add('livro-item');
 
-    // Cria o elemento <a>
     const linkElement = document.createElement('a');
-    linkElement.href = `meu-livro.html?id=${livro.id}`; // Redireciona para meu-livro.html com o ID do livro
+    linkElement.href = `meu-livro.html?id=${livro.id}`;
 
     const imgElement = document.createElement('img');
     imgElement.src = capaLivro;
@@ -109,11 +106,9 @@ function adicionarLivroNaPagina(livro) {
     const tituloElement = document.createElement('p');
     tituloElement.textContent = tituloLivro;
 
-    // Adiciona a imagem e o título ao link
     linkElement.appendChild(imgElement);
     linkElement.appendChild(tituloElement);
 
-    // Adiciona o link ao div do livro
     livroDiv.appendChild(linkElement);
 
     minhasLeiturasDiv.appendChild(livroDiv);
@@ -171,15 +166,7 @@ async function ExibirLivrosNaPag() {
     }
     const livros = await response.json();
     const minhasLeiturasDiv = document.getElementById('minhasLeituras');
-    minhasLeiturasDiv.innerHTML = ''; // Limpa os livros anteriores
-    /*
-    livros.forEach(livro => {
-      const tituloLivro = livro.titulo;
-      const capaLivro = livro.urlCapa ? livro.urlCapa : defaultImageUrl;
-      const livroDiv = document.createElement('div');
-      livroDiv.innerHTML = `<img src="${capaLivro}" alt="${tituloLivro}"><p>${tituloLivro}</p>`;
-      minhasLeiturasDiv.appendChild(livroDiv);
-    });*/
+    minhasLeiturasDiv.innerHTML = '';
     livros.forEach(livro => {
     adicionarLivroNaPagina(livro);
       });
@@ -187,5 +174,6 @@ async function ExibirLivrosNaPag() {
     console.error('Erro ao carregar minhas leituras:', error);
   }
 }
+
 // Chama a função ExibirLivrosNaPag ao carregar a página
 window.onload = ExibirLivrosNaPag;

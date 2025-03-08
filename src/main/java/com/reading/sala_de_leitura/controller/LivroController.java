@@ -18,12 +18,6 @@ public class LivroController {
 
     private LivroService service;
 
-//    @Autowired
-//    private ValidadorExistencia<LivroDTO> validadorAdicionarNoBD;
-//
-//    @Autowired
-//    private Validador<LivroDTO> validadorDeBusca;
-
     @Autowired
     public LivroController(LivroService service) {
         this.service = service;
@@ -33,7 +27,6 @@ public class LivroController {
     @GetMapping("/pesquisarLivro")
     public LivroDTO pesquisarLivro(@RequestParam String titulo) {
         LivroDTO livroDTO = new LivroDTO(null, titulo, null, 0, null, 0);
-//        validadorDeBusca.validar(livroDTO);
         return service.pesquisarPorTitulo(titulo);
     }
 
@@ -54,8 +47,6 @@ public class LivroController {
     public List<LivroDTO> exibirLivros() {
         return service.exibirLivrosSalvos();
     }
-
-    //Funções que aparecerão na página livro-info.html
 
     @GetMapping("/exibirDados/{id}")
     public ResponseEntity<LivroDTO> exibirDados(@PathVariable Long id){

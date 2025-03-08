@@ -11,7 +11,6 @@ import url('styles.css');
   align-items: center;
 }
 
-
 /* BOTAO EDITAR, DELETAR E FAVORITAR */
 .botao {
   top: 90px;
@@ -30,7 +29,7 @@ import url('styles.css');
   background-color: var(--cor-hover);
 }
 
-/* BOTAO EDITAR, DELETAR E FAVORITAR */
+/* BOTAO EDITAR, DELETAR E FAVORITAR CONTAINER*/
 .botoes-dir {
   display: flex;
   flex-direction: column;
@@ -46,7 +45,6 @@ import url('styles.css');
  padding-top: 15px;
 }
 
-
 /*PAG MEU-LIVRO*/
 .livro-container {
   display: flex;
@@ -59,17 +57,17 @@ import url('styles.css');
 
 .info-bloco-geral{
   display: flex;
-  justify-content: flex-start; /* Alinha os blocos à esquerda */
-  flex-wrap: wrap; /* Permite quebra de linha se necessário */
-  gap: 10px; /* Reduz o espaçamento entre os blocos */
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 10px;
 
 }
 .info-bloco {
   display: flex;
-  flex-direction: column; /* Coloca os itens um abaixo do outro */
-  align-items: center; /* Centraliza os itens */
+  flex-direction: column;
+  align-items: center;
   text-align: center;
-  margin: 0 1px; /* Espaçamento entre os blocos */
+  margin: 0 1px;
   flex: 1;
   gap:10px;
   margin-left: 50px;
@@ -89,9 +87,9 @@ import url('styles.css');
 }
 
 .livro-info-img {
-  width: 24px; /* Ajuste o tamanho conforme necessário */
+  width: 24px;
   height: 24px;
-  margin-bottom: 2px; /* Espaçamento entre a imagem e o texto */
+  margin-bottom: 2px;
 }
 
 .info-bloco p {
@@ -101,7 +99,7 @@ import url('styles.css');
 }
 
 .livro-capa {
-  margin-top: 20px; /* Ajuste conforme necessário */
+  margin-top: 20px;
 }
 
 .livro-capa img {
@@ -109,13 +107,11 @@ import url('styles.css');
   height: auto;
   margin-left: 20px;
   border-radius: 10px;
-
 }
-
 
 .livro-informacao {
   display: flex;
-  flex-direction: column; /* Coloca os itens um abaixo do outro */
+  flex-direction: column;
   padding-left: 20px;
   padding-top: 40px;
   font-family: var(--fonte-principal);
@@ -124,24 +120,19 @@ import url('styles.css');
   line-height: 0.2;
 }
 
-
-
 .livro-informacao p {
   display: flex;
-  align-items: center; /* Alinha o texto e a imagem ao centro verticalmente */
-  margin: 10px 0; /* Espaçamento vertical entre as linhas */
+  align-items: center;
+  margin: 10px 0;
   padding-left: 20px;
   border: none;
-  /*background-color: transparent;*/
-
 }
 
 .livro-informacao__img img {
-  width: 25px; /* Tamanho das imagens dos ícones */
+  width: 25px;
   height: auto;
-  margin-right: 20px; /* Espaçamento entre a imagem e o texto */
+  margin-right: 20px;
 }
-
 
 .titulo__secundario{
   font-family: var(--fonte-titulo-livro);
@@ -149,8 +140,6 @@ import url('styles.css');
   padding-left: 25px;
   font-weight: 200;
 }
-
-
 
 /*MODAL EDITAR LIVRO*/
 #formEdicaoLivro {
@@ -163,13 +152,11 @@ import url('styles.css');
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-
 }
 
 .formulario-grupo label {
   margin-bottom: 5px;
   font-weight: normal;
-
 }
 
 .formulario-grupo input {
@@ -177,14 +164,12 @@ import url('styles.css');
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 5px;
-
 }
 
 .formulario-botao {
   display: flex;
   justify-content: space-between;
   gap: 10px;
-
 }
 
 .botao-modal {
@@ -248,5 +233,4 @@ import url('styles.css');
   display: flex;
   align-items: center;
   justify-content: center;
-
 }

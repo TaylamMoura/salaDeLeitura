@@ -6,8 +6,6 @@ import url('styles.css');
   justify-content: space-between;
   gap: 10px;
   padding-left: 100px;
-
-
 }
 
 #minhasLeituras {
@@ -25,7 +23,6 @@ import url('styles.css');
   padding-left: 25px;
   font-weight: 200;
 }
-
 
 /*barra de pesquisa*/
 .tituloLivro {
@@ -67,7 +64,7 @@ import url('styles.css');
 
 /* Item do livro */
 .livro-item {
-  flex: 1 1 calc(20% - 10px); /* 20% da largura menos o gap */
+  flex: 1 1 calc(20% - 10px);
   box-sizing: border-box;
   margin-bottom: 20px;
 }
@@ -75,21 +72,20 @@ import url('styles.css');
 /*Fonte do Título do Livro*/
 .livro-item p {
   font-family: var(--fonte-titulo-livro);
-  color: black; /* Define a cor da fonte */
-  margin-top: 10px; /* Espaço acima do nome do livro */
-  white-space: pre-wrap; /*quebra o titulo para nao passar o livro*/
+  color: black;
+  margin-top: 10px;
+  white-space: pre-wrap;
   overflow-wrap: break-word;
   max-width: 100px;
   text-align: center;
 }
 
 .livro-item img {
-  width: 130px; /*largura*/
-  height: 180px; /*altura*/
+  width: 130px;
+  height: 180px;
   max-width: 130px;
   display: block;
   border-radius: 5px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding-top: 15px;
-
 }
