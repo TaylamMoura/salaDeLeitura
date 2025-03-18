@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/inicio.css">
+    <title>Sala de Leitura</title>
+</head>
+<body>
+    <h1 id="titulo-principal">Bem-vindo ao Sala de Leitura</h1>
+    <h2 id="titulo-secundario">Sua aplicação para registrar leituras e estimular seu foco!</h2>
+
+    <div class="container-usuario">
+
+        <div class="login">
+            <h3 id="titulo-usuario">Login</h3>
+            <p id="usuario-p">Já tem cadastro? Então faça seu login!</p>
+            <button id="botao-login" type="submit" onclick="abrirFormularioLogin()">Login</button>
+        </div>
+
+        <div class="cadastro">
+            <h3 id="titulo-usuario">Cadastre-se</h3>
+            <p id="usuario-p">Ainda não tem uma conta conosco? Cadastre-se! É rapidinho!</p>
+            <a href="cadastro.html" id="botao-cadastro">Cadastre-se</a>
+        </div>
+    </div>
+
+    <!--Modal de Login-->
+    <div id="formulario-login" class="modal" style="display:none;" aria-hidden="true">
+        <div class="modal-content">
+            <span class="close" onclick="fecharFormularioLogin()">&times;</span>
+            <h3 id="titulo-usuario">Login</h3>
+
+            <form id="formLogin">
+                <div class="formulario-grupo">
+                    <label for="inputLogin">Nome de Usuário ou Email:</label>
+                    <input type="text" id="inputLogin" name="nome"><br>
+                </div>
+
+                <div class="formulario-grupo">
+                    <label for="inputSenha">Senha:</label>
+                    <input type="password" id="inputSenha" name="senha"><br>
+                </div>
+            </form>
+        </div>
+
+    </div>
+    <script src="js/inicio.js"></script>
+</body>
+</html>
