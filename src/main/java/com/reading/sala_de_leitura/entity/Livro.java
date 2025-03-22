@@ -29,6 +29,14 @@ public class Livro {
     @Column(name = "ano_publicacao")
     private int anoPublicacao;
 
+    @ManyToOne
+    @JoinColumn(name = "usuario_id", nullable = false)
+    private Usuario usuario;
+
+    //classe livro controller criou
+    public Livro(Object o, String titulo, String autor, int paginas, String s, int i) {
+    }
+
     public void atualizar(AtualizarLivro dados) {
         if(dados.paginas() != 0){
             this.paginas = dados.paginas();
