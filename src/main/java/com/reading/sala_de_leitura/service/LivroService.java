@@ -5,6 +5,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.reading.sala_de_leitura.dto.LivroDTO;
 import com.reading.sala_de_leitura.entity.Livro;
+import com.reading.sala_de_leitura.entity.Usuario;
 import com.reading.sala_de_leitura.repository.LivroRepository;
 import jakarta.validation.ValidationException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,42 +58,54 @@ public class LivroService {
     }
 
     @Transactional
-    public void salvarLivro(LivroDTO livroDTO){
+    public void salvarLivro(LivroDTO livroDTO, Usuario usuario){
 
-        Livro livro =new Livro(null, livroDTO.titulo(), livroDTO.autor(), livroDTO.paginas(), livroDTO.urlCapa(), livroDTO.anoPublicacao());
+        Livro livro =new Livro(
+                null,
+                livroDTO.titulo(),
+                livroDTO.autor(),
+                livroDTO.paginas(),
+                livroDTO.urlCapa(),
+                livroDTO.anoPublicacao()
+        );
+        livro.setUsuario(usuario);
         repository.save(livro);
     }
 
-    public List<LivroDTO> exibirLivrosSalvos(){
-        List<Livro> livros = repository.findAll();
+    public List<LivroDTO> exibirLivrosSalvos(Usuario usuario){
+        List<Livro> livros = repository.findByUsuario(usuario);
         return livros.stream().map(LivroDTO::new).toList();
     }
 
     @Transactional
-    public void deletarLivro(Long id){
-        if (repository.existsById(id)){
-            repository.deleteById(id);
-        } else{
-            throw new ValidationException("Livro não escontrado");
+    public void deletarLivro(Long id, Usuario usuario){
+        Livro livro = repository.findById(id)
+                .orElseThrow(() -> new ValidationException("Livro não escontrado"));
+
+        if (!livro.getUsuario().equals(usuario)){
+            throw new ValidationException("Você não tem permissão para excluir este livro.");
         }
+        repository.delete(livro);
     }
 
     @Transactional
-    public Livro editarLivro(Long id, AtualizarLivro atualizarDados) {
-
-        Optional<Livro> optionalLivro = repository.findById(id);
-        if (optionalLivro.isPresent()){
-            var livro = optionalLivro.get();
-            livro.atualizar(atualizarDados);
-            repository.save(livro);
-            return livro;
-        } else{
-            throw new ValidationException("Atualizações não foram salvas");
+    public Livro editarLivro(Long id, AtualizarLivro atualizarDados, Usuario usuario) {
+        Livro livro = repository.findById(id)
+                .orElseThrow(() -> new ValidationException("Livro não escontrado"));
+        if (!livro.getUsuario().equals(usuario)){
+            throw new ValidationException("Você não tem permissão para excluir este livro.");
         }
+        livro.atualizar(atualizarDados);
+        repository.save(livro);
+        return livro;
     }
 
-    public LivroDTO exibirDadosLivro(Long id) {
-        Optional<Livro> livro = repository.findById(id);
-        return livro.map(LivroDTO::new).orElse(null);
+    public LivroDTO exibirDadosLivro(Long id, Usuario usuario) {
+        Livro livro = repository.findByIdAndUsuario(id, usuario)
+                .orElseThrow(()-> new ValidationException("Livro não encontrado"));
+        return  new LivroDTO(livro);
+
+//        Optional<Livro> livro = repository.findById(id);
+//        return livro.map(LivroDTO::new).orElse(null);
     }
 }
