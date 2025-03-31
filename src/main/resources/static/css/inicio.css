@@ -1,0 +1,146 @@
+import url('styles.css');
+
+*{
+    box-sizing: border-box;
+}
+body {
+    padding: 10px; /* Garante um espaço interno para todo o conteúdo da página */
+    margin: 0;
+    box-sizing: border-box; /* Garante que padding seja contabilizado corretamente */
+}
+
+.cabecalho-titulos{
+    margin: 50px;
+}
+
+h1{
+
+    font-family: (var--fonte-titulo-pag);
+    font-weight: 400;
+    font-size: 50px;
+}
+
+h2{
+    font-family: var(--fonte-textos);
+    font-size: 20px;
+    font-weight: lighter;
+  
+}
+
+hr{
+    border: none;
+    height: 1px;
+    background-color: black;
+}
+
+
+.container-usuario{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 20px;
+}
+
+.login, .cadastro{
+    flex: 1;
+    text-align: center;
+}
+
+.linha-vertical{
+    width: 1px; /* Largura da linha */
+    height: 300px; /* Altura da linha */
+    background-color: black; /* Cor da linha */
+    margin: 0 auto;
+}
+
+#titulo-usuario, #titulo-usuario{
+    font-family: var(--fonte-principal);
+    font-size: 30px;
+    font-weight: medium;
+}
+
+#usuario-p{
+    font-family: var(--fonte-textos);
+    font-size: 20px;
+}
+
+#botao-login, #botao-cadastro{
+    width: 200px;
+    height: 60px;
+    background-color: var(--cor-botao);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: var(--fonte-botao);
+    font-size: 25px;
+    margin: 20px auto;
+    text-align: center;
+}
+
+#botao-login:hover, #botao-cadastro:hover{
+    background-color: var(--cor-hover);
+}
+
+/* MODAL*/
+.modal{
+    display: none;
+    position: fixed;
+    z-index: 10;
+    /*flex-direction: column;*/
+    gap: 15px;
+}
+
+.modal-content {
+    width: 400px;
+    border-radius: 5px;
+    background-color: var(--cor-modal);
+    text-align: center;
+    padding: 20px;
+}
+
+.formulario-grupo{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+}
+
+.formulario-grupo input{
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-family: var(--fonte-principal);
+    height: 15px;
+}
+
+.botao-modal{
+    width: 190px;
+    height: 20px;
+    padding: 25px;
+    background-color: var(--cor-botao);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: var(--fonte-botao);
+    font-size: 18px;
+    margin: 20px auto; /* Centraliza horizontalmente com margem automática */
+    /*flex-direction: row;*/
+    text-align: center;
+
+}
+
+.botao-modal:hover{
+    background-color: var(--cor-hover);
+}
+
+@media (max-width: 768px) {
+    button {
+        width: 100%; /* Botão ocupa toda a largura do modal em telas pequenas */
+    }
+}
