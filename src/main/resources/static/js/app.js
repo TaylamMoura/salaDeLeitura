@@ -1,3 +1,35 @@
+//FUNÇÃO PARA EXEBIR MODAL DE PESQUISA
+window.onload = function() {
+  document.getElementById('resultadoModal').style.display = 'none';
+  console.log('Modal escondido no onload');
+};
+
+//FUNÇÃO PARA EXIBIR NOME DE USUÁRIO NO FRONT
+async function exibirNomeUsuario() {
+    try {
+        const response = await fetch('/usuario-logado', {
+            method: 'GET',
+            credentials: 'include',
+            headers: { 'Content-Type': 'application/json' }
+        });
+
+        if (!response.ok) {
+            throw new Error('Erro ao buscar o nome do usuário.');
+        }
+
+        const data = await response.json();
+        const nomeUsuario = data.usuario || 'Usuário';
+        const tituloH2 = document.querySelector('.titulo__secundario');
+        tituloH2.innerText = `Minhas Leituras | ${nomeUsuario}`;
+    } catch (error) {
+        console.error('Erro ao buscar o nome do usuário:', error);
+    }
+}
+
+window.onload = function() {
+    exibirNomeUsuario();
+};
+
 
 // CONFIG APIKEY
 async function fetchApiKey() {
@@ -10,6 +42,7 @@ async function fetchApiKey() {
         return null;
     }
 }
+
 
 // BUSCA LIVRO NA API
 async function buscarLivroPorTitulo(titulo) {
@@ -41,7 +74,10 @@ async function buscarLivroPorTitulo(titulo) {
 
 const defaultImageUrl = 'https://via.placeholder.com/150x150';
 
-// Evento onsubmit do formulário
+
+
+
+//EVENTO ONSUBMIT DO FORMULARIO DE PESQUISA DO LIVRO
 document.getElementById('buscarLivroForm').onsubmit = async function(event) {
   event.preventDefault();
   const titulo = document.getElementById('tituloLivro').value;
@@ -52,7 +88,7 @@ document.getElementById('buscarLivroForm').onsubmit = async function(event) {
   const resultadoDiv = document.getElementById('resultadoBusca');
   resultadoDiv.innerHTML = '';
 
-  if (livros) {
+  if (livros && livros.length > 0) {
     livros.forEach(livro => {
       const tituloLivro = livro.volumeInfo.title;
       const capaLivro = (livro.volumeInfo.imageLinks && livro.volumeInfo.imageLinks.thumbnail) ? livro.volumeInfo.imageLinks.thumbnail : defaultImageUrl;
@@ -62,32 +98,36 @@ document.getElementById('buscarLivroForm').onsubmit = async function(event) {
       livroDiv.className = 'livro-item';
       livroDiv.innerHTML = `<img src="${capaLivro}" alt="${tituloLivro}"><p>${tituloLivro}</p>`;
 
-      // Adiciona um evento de clique ao livro para salvá-lo no banco de dados
       livroDiv.addEventListener('click', () => {
         const livroData = {
           titulo: livro.volumeInfo.title,
           autor: livro.volumeInfo.authors ? livro.volumeInfo.authors[0] : 'Autor desconhecido',
           paginas: livro.volumeInfo.pageCount || 0,
-          urlCapa: capaLivro,
+          urlCapa: (livro.volumeInfo.imageLinks &&
+                    livro.volumeInfo.imageLinks.thumbnail &&
+                    livro.volumeInfo.imageLinks.thumbnail.trim() !== "")
+                    ? livro.volumeInfo.imageLinks.thumbnail
+                    : 'https://via.placeholder.com/150',
           anoPublicacao: livro.volumeInfo.publishedDate ? livro.volumeInfo.publishedDate.split('-')[0] : new Date().getFullYear()
         };
-        console.log('Adicionando livro ao banco de dados:', livroData);
+
         adicionarLivroAoBanco(livroData);
       });
 
-      console.log('Adicionando livro à div de resultados:', livroDiv);
       resultadoDiv.appendChild(livroDiv);
     });
+
+    document.getElementById('resultadoModal').style.display = 'block';
+    console.log('Exibindo modal com resultados');
+
   } else {
     resultadoDiv.innerHTML = '<p>Livro não encontrado.</p>';
   }
-
-  console.log('Exibindo modal');
-  document.getElementById('resultadoModal').style.display = 'block';
 };
 
 
-// Função para adicionar o livro na página
+
+//FUNÇÃO PARA ADD LIVRO NA PÁGINA INICIAL
 function adicionarLivroNaPagina(livro) {
     const minhasLeiturasDiv = document.getElementById('minhasLeituras');
     const tituloLivro = livro.titulo;
@@ -126,7 +166,8 @@ window.onclick = function(event) {
     }
 };
 
-// Função para adicionar livro ao banco de dados
+
+//FUNÇÃO PARA ADD LIVRO AO BANCO DE DADOS
 async function adicionarLivroAoBanco(livro) {
   const livroData = {
     titulo: livro.titulo,
@@ -142,13 +183,16 @@ async function adicionarLivroAoBanco(livro) {
       headers: {
         'Content-Type': 'application/json'
       },
+      credentials: 'include',
       body: JSON.stringify(livroData)
     });
+
     if (!response.ok) {
       throw new Error('Erro ao adicionar livro ao banco de dados');
     }
     const novoLivro = await response.json();
     adicionarLivroNaPagina(novoLivro);
+
     // Fecha a janela modal
     document.getElementById('resultadoModal').style.display = 'none';
     window.location.reload();
@@ -157,13 +201,28 @@ async function adicionarLivroAoBanco(livro) {
   }
 }
 
-// Função para exibir os livros salvos na página
+
+//FUNÇÃO PARA EXIBIR OS LIVROS SALVOS NA PÁGINA
 async function ExibirLivrosNaPag() {
   try {
-    const response = await fetch('/livrosSalvos');
-    if (!response.ok) {
-      throw new Error('Erro ao buscar livros do banco de dados');
-    }
+     const response = await fetch('/livrosSalvos', {
+             method: 'GET',
+             credentials: 'include',
+             headers: {
+                  'Content-Type': 'application/json'
+             }
+         });
+
+     if (!response.ok) {
+           if (response.status === 403) {
+                  alert('Sessão expirada. Faça login novamente.');
+                  window.location.href = 'inicio.html';
+           } else {
+                  throw new Error('Erro ao buscar livros do banco de dados');
+           }
+           return;
+     }
+
     const livros = await response.json();
     const minhasLeiturasDiv = document.getElementById('minhasLeituras');
     minhasLeiturasDiv.innerHTML = '';
@@ -174,6 +233,18 @@ async function ExibirLivrosNaPag() {
     console.error('Erro ao carregar minhas leituras:', error);
   }
 }
+
+
+//FUNÇÃO PARA LOGOUT
+async function fazerLogout() {
+    try {
+            await fetch('/logout', { method: 'POST', credentials: 'include' });
+        } catch (error) {
+            console.error('Erro no logout:', error);
+        }
+    window.location.href = 'inicio.html';
+}
+
 
 // Chama a função ExibirLivrosNaPag ao carregar a página
 window.onload = ExibirLivrosNaPag;
