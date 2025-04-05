@@ -1,24 +1,33 @@
-// Função para obter o ID do livro da URL
+//FUNÇÃO PARA OBTER ID DO LIVRO DA URL
 function obterIdLivro() {
   const urlParams = new URLSearchParams(window.location.search);
   return urlParams.get('id');
 }
 
-// Função para buscar as informações do livro pelo ID
-async function buscarLivroPorId(id) {
-  try {
-    const response = await fetch(`/exibirDados/${id}`);
-    if (!response.ok) {
-      throw new Error('Erro ao buscar informações do livro');
-    }
-    return await response.json();
-  } catch (error) {
-    console.error('Erro ao buscar informações do livro:', error);
-    throw error;
-  }
-}
 
-// Função para exibir as informações do livro na página
+//FUNÇÃO PARA BUSCAR AS INFORMAÇÕES DO LIVRO PELO ID
+async function buscarLivroPorId(id) {
+      try {
+        const response = await fetch(`/exibirDados/${id}`, {
+            method: 'GET',
+            headers:{
+                 'Content-Type': 'application/json'
+            },
+            credentials: 'include',
+        });
+
+        if (!response.ok) {
+          throw new Error('Erro ao buscar informações do livro');
+        }
+        return await response.json();
+      } catch (error) {
+        console.error('Erro ao buscar informações do livro:', error);
+        throw error;
+      }
+    }
+
+
+//FUNÇÃO PARA EXIBIR AS INFORMAÇÕES DO LIVRO NA PÁGINA
 async function exibirInformacoesLivro() {
   try {
     const id = obterIdLivro();
@@ -44,6 +53,8 @@ async function exibirInformacoesLivro() {
 // Chama a função para exibir as informações do livro ao carregar a página
 window.onload = exibirInformacoesLivro;
 
+
+// MODAL DE EDIÇÃO
 // Função para mostrar o formulário de edição
 function mostrarFormularioEdicao() {
   document.getElementById('formulario-edicao').style.display = 'block';
@@ -54,12 +65,12 @@ function fecharFormularioEdicao() {
   document.getElementById('formulario-edicao').style.display = 'none';
 }
 
-// Função para enviar a edição do livro ao servidor
+
+//FUNÇÃO PARA ENVIAR A EDIÇÃO DO LIVRO AO SERVIDOR
 async function enviarEdicaoLivro() {
   const id = obterIdLivro();
   const paginas = document.getElementById('inputPaginas').value;
   const anoPublicacao = document.getElementById('inputAnoPublicacao').value;
-
   const dadosAtualizados = {
     paginas: paginas,
     anoPublicacao: anoPublicacao
@@ -71,6 +82,7 @@ async function enviarEdicaoLivro() {
       headers: {
         'Content-Type': 'application/json'
       },
+      credentials: 'include',
       body: JSON.stringify(dadosAtualizados)
     });
 
@@ -78,7 +90,7 @@ async function enviarEdicaoLivro() {
       throw new Error('Erro ao atualizar o livro');
     }
 
-    // Atualize as informações do livro na página após a edição
+    //ATUALIZA AS INFORMAÇÕES DO LIVRO APÓS A EDIÇÃO
     exibirInformacoesLivro();
     document.getElementById('formulario-edicao').style.display = 'none';
   } catch (error) {
@@ -87,11 +99,13 @@ async function enviarEdicaoLivro() {
   }
 }
 
-// Função para cancelar a edição
+// FUNÇÃO PARA CANCELAR EDIÇÃO DO LIVRO
 function cancelarEdicao() {
   document.getElementById('formulario-edicao').style.display = 'none';
 }
 
+
+// MODAL EXCLUIR
 // Função para mostrar o modal de confirmação de exclusão
 function mostrarConfirmacaoExclusao() {
   document.getElementById('confirmacaoExclusaoModal').style.display = 'block';
@@ -102,7 +116,7 @@ function fecharConfirmacaoExclusao() {
   document.getElementById('confirmacaoExclusaoModal').style.display = 'none';
 }
 
-// Função para excluir o livro após confirmação
+// FUNÇÃO PARA EXCLUIR LIVRO APÓS CONFIRMAÇÃO
 async function excluirLivroConfirmado() {
   const id = obterIdLivro();
 
@@ -111,7 +125,8 @@ async function excluirLivroConfirmado() {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json'
-      }
+      },
+      credentials: 'include',
     });
 
     if (!response.ok) {
@@ -120,9 +135,11 @@ async function excluirLivroConfirmado() {
 
     alert('Livro excluído com sucesso!');
     window.location.href = 'index.html';
+
   } catch (error) {
     console.error('Erro ao excluir o livro:', error);
     alert('Erro ao excluir o livro.');
+
   } finally {
     fecharConfirmacaoExclusao();
   }
