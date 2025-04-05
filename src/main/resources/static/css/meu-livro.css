@@ -48,7 +48,7 @@ import url('styles.css');
 /*PAG MEU-LIVRO*/
 .livro-container {
   display: flex;
-  justify-content: flex-start; 
+  justify-content: flex-start;
   align-items: flex-start;
   border-radius: 10px;
   padding: 10px;
@@ -135,10 +135,7 @@ import url('styles.css');
 }
 
 .titulo__secundario{
-  font-family: var(--fonte-titulo-livro);
-  font-size: 25px;
   padding-left: 25px;
-  font-weight: 200;
 }
 
 /*MODAL EDITAR LIVRO*/
@@ -157,7 +154,6 @@ import url('styles.css');
 .formulario-grupo label {
   margin-bottom: 5px;
   font-weight: normal;
-
 }
 
 .formulario-grupo input {
@@ -167,29 +163,9 @@ import url('styles.css');
   border-radius: 5px;
 }
 
-.formulario-botao {
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
-}
-
-.botao-modal {
-  padding: 10px 20px;
-  background-color: #638C6D;
-  border: none;
-  border-radius: 5px;
-  color: var(--cor-botao);
-  cursor: pointer;
-  font-family: var(--fonte-botao);
-  width: auto;
-}
-
-.botao-modal:hover {
-  background-color: var(--cor-hover);
-}
-
 /*ESTILO MODAL EXCLUIR*/
-.formulario-botao-exclui{
+
+.formulario-botao{
   display: flex;
   justify-content: space-between;
   gap:30px;
@@ -197,21 +173,6 @@ import url('styles.css');
   align-items: center;
   font-size: 16px;
   font-family: var(--fonte-principal);
-}
-
-.botao-modal-excluir {
-  padding: 10px 20px;
-  background-color: #638C6D;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-family: var(--fonte-botao);
-  width: auto;
-  font-size: 16px;
-}
-
-.botao-modal-excluir:hover {
-  background-color: var(--cor-hover);
 }
 
 .botao-iniciar{
