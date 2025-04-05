@@ -1,32 +1,37 @@
 import url('styles.css');
 
-*{
-    box-sizing: border-box;
-}
-body {
-    padding: 10px; /* Garante um espaço interno para todo o conteúdo da página */
-    margin: 0;
-    box-sizing: border-box; /* Garante que padding seja contabilizado corretamente */
+body{
+    margin:10px;
 }
 
 .cabecalho-titulos{
-    margin: 50px;
+    margin: 30px;
 }
 
-h1{
-
-    font-family: (var--fonte-titulo-pag);
-    font-weight: 400;
-    font-size: 50px;
+#titulo-logo{
+    font-size:60px;
+    margin:10px;
 }
 
 h2{
     font-family: var(--fonte-textos);
-    font-size: 20px;
-    font-weight: lighter;
-  
+    font-size: 25px;
+    font-weight: 300;
+
 }
 
+h3{
+    font-size: 40px;
+    font-family: var(--fonte-principal);
+    font-weight: lighter;
+}
+
+#texto__p{
+    font-family: var(--fonte-textos);
+    font-size: 20px;
+}
+
+/*linha*/
 hr{
     border: none;
     height: 1px;
@@ -48,27 +53,16 @@ hr{
 }
 
 .linha-vertical{
-    width: 1px; /* Largura da linha */
-    height: 300px; /* Altura da linha */
-    background-color: black; /* Cor da linha */
+    width: 1px;
+    height: 300px;
+    background-color: black;
     margin: 0 auto;
-}
-
-#titulo-usuario, #titulo-usuario{
-    font-family: var(--fonte-principal);
-    font-size: 30px;
-    font-weight: medium;
-}
-
-#usuario-p{
-    font-family: var(--fonte-textos);
-    font-size: 20px;
 }
 
 #botao-login, #botao-cadastro{
     width: 200px;
     height: 60px;
-    background-color: var(--cor-botao);
+    background-color: #E0E5B6;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -87,7 +81,6 @@ hr{
     display: none;
     position: fixed;
     z-index: 10;
-    /*flex-direction: column;*/
     gap: 15px;
 }
 
@@ -103,7 +96,6 @@ hr{
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-
     padding: 8px;
     border: none;
     border-radius: 5px;
@@ -119,28 +111,8 @@ hr{
     height: 15px;
 }
 
-.botao-modal{
-    width: 190px;
-    height: 20px;
-    padding: 25px;
-    background-color: var(--cor-botao);
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-family: var(--fonte-botao);
-    font-size: 18px;
-    margin: 20px auto; /* Centraliza horizontalmente com margem automática */
-    /*flex-direction: row;*/
-    text-align: center;
-
-}
-
-.botao-modal:hover{
-    background-color: var(--cor-hover);
-}
-
 @media (max-width: 768px) {
     button {
-        width: 100%; /* Botão ocupa toda a largura do modal em telas pequenas */
+        width: 100%;
     }
 }
