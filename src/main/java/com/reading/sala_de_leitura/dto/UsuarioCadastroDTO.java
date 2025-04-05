@@ -1,19 +1,20 @@
 package com.reading.sala_de_leitura.dto;
 
 import com.reading.sala_de_leitura.entity.Usuario;
-import jakarta.persistence.Column;
+
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
-import java.sql.Date;
+import java.time.LocalDate;
 
 public record UsuarioCadastroDTO(
         @NotEmpty
         String nome,
 
-        @NotEmpty
-        Date dataAniversario,
+        @NotNull
+        LocalDate dataNascimento,
 
         @NotEmpty
         String usuario,
@@ -27,6 +28,6 @@ public record UsuarioCadastroDTO(
         String senha
 ) {
     public UsuarioCadastroDTO(Usuario usuario){
-        this(usuario.getNome(), usuario.getDataAniversario(), usuario.getUsuario(), usuario.getEmail(), usuario.getSenha());
+        this(usuario.getNome(), usuario.getDataNascimento(), usuario.getUsuario(), usuario.getEmail(), usuario.getSenha());
     }
 }
