@@ -3,12 +3,13 @@ package com.reading.sala_de_leitura.entity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 
-import java.sql.Date;
 import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,9 +47,9 @@ public class Usuario {
     private String nome;
 
     @Column(name = "data_aniversario")
-    @NotEmpty(message = "Digite sua data de aniversário.")
-    private Date dataAniversario;
+    @NotNull(message = "Digite sua data de aniversário.")
+    private LocalDate dataNascimento;
 
-    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.REMOVE, orphanRemoval = true)
     private List<Livro> livros = new ArrayList<>();
 }
