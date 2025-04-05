@@ -4,20 +4,23 @@
 .container-cadastro {
     width: 100%;
     max-width: 600px;
-    margin: 50px auto; /* Centralizado com espaçamento superior/inferior */
+    margin: 50px auto;
     padding: 30px;
     border: 1px solid #ccc;
     border-radius: 10px;
     background-color: var(--cor-modal); /* Cor de fundo dos formulários */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 5px;
 }
 
 
 .titulo-cabecalho{
     text-align: center;
-    font-family: var(--fonte-titulo-livro);
+    font-family: var(--fonte-textos);
     font-size: 30px;
-    margin-bottom: 30px;
+    font-weight: 300px;
+    margin: 7px;
+    }
 
 }
 
@@ -47,7 +50,7 @@
 /* Estilo dos rótulos */
 .formulario-grupo label {
     display: block;
-    font-family: var(--fonte-titulo-livro);
+    font-family: var(--fonte-principal);
     font-weight: lighter;
     font-size: 1rem;
     color: black;
@@ -78,9 +81,10 @@ button {
     display: block;
     width: 100%;
     padding: 15px;
-    font-size: 1.2rem;
+    font-size: 20px;
     font-family: var(--fonte-botao);
-    background-color: var(--cor-botao);
+    background-color: #638C6D;
+    color: var(--cor-botao-letra);
     border: 1px solid #888;
     border-radius: 5px;
     cursor: pointer;
