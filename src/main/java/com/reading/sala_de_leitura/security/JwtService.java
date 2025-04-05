@@ -51,5 +51,3 @@ public class JwtService {
     }
 
 }
-
-//gera token jwt apos a autenticacao
