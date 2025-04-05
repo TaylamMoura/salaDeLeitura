@@ -15,7 +15,6 @@ import org.springframework.transaction.annotation.Transactional;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class LivroService {
@@ -57,25 +56,35 @@ public class LivroService {
         }
     }
 
+
     @Transactional
-    public void salvarLivro(LivroDTO livroDTO, Usuario usuario){
+    public void salvarLivro(LivroDTO livroDTO, Usuario usuarioLogado){
+
+        String urlCapa = livroDTO.urlCapa();
+
+        if (urlCapa == null || urlCapa.trim().isEmpty()){
+            urlCapa = "https://via.placeholder.com/150";
+        }
 
         Livro livro =new Livro(
                 null,
                 livroDTO.titulo(),
                 livroDTO.autor(),
                 livroDTO.paginas(),
-                livroDTO.urlCapa(),
-                livroDTO.anoPublicacao()
+                urlCapa,
+                livroDTO.anoPublicacao(),
+                usuarioLogado
         );
-        livro.setUsuario(usuario);
+
         repository.save(livro);
     }
+
 
     public List<LivroDTO> exibirLivrosSalvos(Usuario usuario){
         List<Livro> livros = repository.findByUsuario(usuario);
         return livros.stream().map(LivroDTO::new).toList();
     }
+
 
     @Transactional
     public void deletarLivro(Long id, Usuario usuario){
@@ -87,6 +96,7 @@ public class LivroService {
         }
         repository.delete(livro);
     }
+
 
     @Transactional
     public Livro editarLivro(Long id, AtualizarLivro atualizarDados, Usuario usuario) {
@@ -100,12 +110,10 @@ public class LivroService {
         return livro;
     }
 
+
     public LivroDTO exibirDadosLivro(Long id, Usuario usuario) {
         Livro livro = repository.findByIdAndUsuario(id, usuario)
                 .orElseThrow(()-> new ValidationException("Livro não encontrado"));
         return  new LivroDTO(livro);
-
-//        Optional<Livro> livro = repository.findById(id);
-//        return livro.map(LivroDTO::new).orElse(null);
     }
 }
