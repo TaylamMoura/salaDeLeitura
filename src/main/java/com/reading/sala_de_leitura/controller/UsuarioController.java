@@ -12,7 +12,6 @@ import jakarta.validation.Valid;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -34,13 +33,11 @@ public class UsuarioController {
     @PostMapping
     public ResponseEntity<?> criarUsuario(@Valid @RequestBody UsuarioCadastroDTO cadastroDTO){
         Usuario novoUsuario = usuarioService.salvarUsuario(cadastroDTO);
-        System.out.println("DTO recebido: " + cadastroDTO); //REMOVER
             return ResponseEntity.status(HttpStatus.CREATED).body(new UsuarioRetornoDTO(novoUsuario));
     }
 
     @PostMapping("/login")
-    public ResponseEntity<Map<String, String>> loginUsuario(
-            @RequestBody UsuarioLoginDTO loginDTO,
+    public ResponseEntity<Map<String, String>> loginUsuario( @RequestBody UsuarioLoginDTO loginDTO,
             HttpServletResponse response) {
         try {
             boolean credencialValida = usuarioService.verificarCredenciais(loginDTO.email(), loginDTO.senha());
