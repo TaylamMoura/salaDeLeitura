@@ -1,5 +1,8 @@
 import url('styles.css');
 
+header {
+    position: relative;
+}
 .livros-container {
   display: flex;
   flex-wrap: wrap;
@@ -18,10 +21,7 @@ import url('styles.css');
 }
 
 .titulo__secundario{
-  font-family: var(--fonte-titulo-livro);
-  font-size: 25px;
   padding-left: 25px;
-  font-weight: 200;
 }
 
 /*barra de pesquisa*/
@@ -88,4 +88,20 @@ import url('styles.css');
   border-radius: 5px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding-top: 15px;
+}
+
+#logout {
+     background-color:#638C6D;
+     border: none;
+     font-family:var(--fonte-botao);
+     cursor: pointer;
+     float: right;
+     border-radius: 3px;
+     position: absolute;
+     top: 10px;
+     right: 10px;
+}
+
+#logout:hover {
+    background-color: var(--cor-hover);
 }
