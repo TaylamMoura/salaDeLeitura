@@ -43,8 +43,9 @@ public class LivroService {
                 int pageCount = volumeInfo.get("pageCount").getAsInt();
                 String thumbnail = volumeInfo.getAsJsonObject("imageLinks").get("thumbnail").getAsString();
                 String publishedDate = volumeInfo.get("publishedDate").getAsString();
+                int ano = publishedDate != null ? Integer.parseInt(publishedDate.split("-")[0]) : 0;
 
-                return new LivroDTO(null, title, author, pageCount, thumbnail, publishedDate != null ? Integer.parseInt(publishedDate.split("-")[0]) : 0);
+                return new LivroDTO(null, title, author, pageCount, thumbnail, ano, 0);
 
             } else {
                 System.out.println("Livro não encontrado. Tente outro título!");
