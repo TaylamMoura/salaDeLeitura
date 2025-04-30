@@ -72,7 +72,6 @@ async function fazerLogin(){
 
         if (response.ok) {
               const dados = await response.json();
-              alert(dados.mensagem);
               window.location.href = 'index.html';
             } else {
               const erro =  await response.json();
