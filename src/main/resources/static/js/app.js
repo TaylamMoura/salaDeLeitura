@@ -1,4 +1,4 @@
-//FUNÇÃO PARA EXEBIR MODAL DE PESQUISA
+//FUNÇÃO PARA EXIBIR MODAL DE PESQUISA
 window.onload = function() {
   document.getElementById('resultadoModal').style.display = 'none';
   console.log('Modal escondido no onload');
@@ -25,11 +25,7 @@ async function exibirNomeUsuario() {
         console.error('Erro ao buscar o nome do usuário:', error);
     }
 }
-
-window.onload = function() {
-    exibirNomeUsuario();
-};
-
+window.addEventListener('load', exibirNomeUsuario);
 
 // CONFIG APIKEY
 async function fetchApiKey() {
