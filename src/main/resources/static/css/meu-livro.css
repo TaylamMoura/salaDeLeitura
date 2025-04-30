@@ -84,6 +84,8 @@ import url('styles.css');
   margin-bottom: 5px;
   font-family: var(--fonte-principal);
   margin: 0;
+  font-size: 14px;
+  color: rgb(48, 44, 44);
 }
 
 .livro-info-img {
@@ -92,10 +94,12 @@ import url('styles.css');
   margin-bottom: 2px;
 }
 
+
 .info-bloco p {
   margin: 0;
   font-family: var(--fonte-principal);
   line-height: 1.2;
+  font-size: 14px;
 }
 
 .livro-capa {
@@ -177,14 +181,16 @@ import url('styles.css');
 
 .botao-iniciar{
   border-radius: 10px;
-  background-color: var(--cor-botao);
+  background-color: #E0E5B6;
   cursor: pointer;
-  border: none;
+  border: 1px;
   font-family: var(--fonte-botao);
   width: 200px;
   height: 40px;
   padding: 10px 20px;
   font-size: 16px;
+  position: relative;
+  top: 80% !important;
 }
 
 .botao-iniciar:hover{
@@ -195,4 +201,37 @@ import url('styles.css');
   display: flex;
   align-items: center;
   justify-content: center;
+  
+}
+
+.barra-progresso-container {
+  position: absolute;
+  left: 33%;
+  top:60%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 20px 0;
+
+}
+
+.barra-progresso {
+  width: 400px;
+  height: 8px;
+  background-color: #F8F0E5;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+}
+
+#progresso {
+  height: 100%;
+  background-color: #C84C05;
+  transition: width 0.3s ease;
+}
+
+#paginaAtual,
+#totalPaginas {
+  font-size: 16px;
+  font-weight: bold;
 }
