@@ -14,6 +14,9 @@
   - Ao acessar pela primeira vez, o usuário deve fazer cadastro.
   - Na página inicial, há o botão 'Sair' para o usuário fazer o logout com segurança.
 
+![login](https://github.com/user-attachments/assets/150bc3aa-94cf-4a12-afd4-4cef3b315e32)
+
+    
 <h3>Pesquisa e adição de livros a biblioteca virtual:</h3>
 
   - Usuário pesquisa o título do livro ou nome do autor através da API do GoogleBook;
@@ -26,12 +29,18 @@
   - Ao clicar sobre a capa do livro, o usuário é redirecionado à página com informações sobre o livro (nome do livro, nome do autor, quantidade de páginas e ano de publicação). O usuário consegue editar a quantidade de páginas e ano de publicação.
   - Também é possível fazer a exclusão do livro ao clicar no botão excluir.
 
+![adicionar-livro](https://github.com/user-attachments/assets/32e23e8b-c768-4a35-a127-884fdb0728e3)
+
+
 <h3>Iniciar sessão de leitura:</h3>
 
   - Ao clicar no botão iniciar sessão, o usuário poderá dar *play* no cronômetro e registrar o tempo da sua leitura;
   - Poderá *pausar* a sessão;
   - Ao clicar no botão *stop*, a sessão de leitura é finalizada e o usuário informa em que página do livro ele parou;
   - Com essa informação, a barra de progresso da leitura avança até chegar ao total de páginas do livro.
+
+![sessao-leitura](https://github.com/user-attachments/assets/dbbac71f-a5ec-4388-a3cb-e26511617ae4)
+
 
 ❗ A leitura do livro em si é feita pelo livro físico do usuário leitor ou ebook e não pela aplicação em si. ❗
 
