@@ -39,6 +39,16 @@ async function exibirInformacoesLivro() {
         document.getElementById('autorLivro').innerHTML = ` ${livro.autor}`;
         document.getElementById('paginasLivro').innerHTML = ` ${livro.paginas}`;
         document.getElementById('anoPublicacao').innerHTML = ` ${livro.anoPublicacao}`;
+        
+        //BARRA DE PROGRESSO
+        const paginaAtual = livro.paginaAtual || 0;
+        const totalPaginas = livro.paginas;
+
+        document.getElementById('paginaAtual').textContent = paginaAtual;
+        document.getElementById('totalPaginas').textContent = totalPaginas;
+
+        const progressoPercentual = totalPaginas > 0 ? (paginaAtual / totalPaginas) * 100 : 0;
+        document.getElementById('progresso').style.width = `${progressoPercentual}%`;
       } else {
         document.getElementById('livro-informacao').innerHTML = '<p>Livro não encontrado.</p>';
       }
@@ -89,6 +99,7 @@ async function enviarEdicaoLivro() {
     if (!response.ok) {
       throw new Error('Erro ao atualizar o livro');
     }
+
 
     //ATUALIZA AS INFORMAÇÕES DO LIVRO APÓS A EDIÇÃO
     exibirInformacoesLivro();
@@ -143,4 +154,14 @@ async function excluirLivroConfirmado() {
   } finally {
     fecharConfirmacaoExclusao();
   }
+}
+
+function iniciarSessao() {
+  const livroId = obterIdLivro();
+  if(livroId){
+    window.location.href = `sessaoLeitura.html?id=${livroId}`;
+  } else{
+    alert('Erro: livro nao encontrado.');
+  }
+    
 }
