@@ -8,9 +8,20 @@ public record LivroDTO(
         String autor,
         int paginas,
         String urlCapa,
-        int anoPublicacao) {
+        int anoPublicacao,
+        int paginaAtual) {
 
-    public LivroDTO(Livro livro) {
-        this(livro.getId(), livro.getTitulo(), livro.getAutor(), livro.getPaginas(), livro.getUrlCapa(), livro.getAnoPublicacao());
+    public LivroDTO(Livro livro, int paginaAtual) {
+        this(
+            livro.getId(), 
+            livro.getTitulo(), 
+            livro.getAutor(), 
+            livro.getPaginas(), 
+            livro.getUrlCapa(), 
+            livro.getAnoPublicacao(),
+            paginaAtual);
+    }
+    public LivroDTO(Livro livro){
+        this(livro, 0);
     }
 }
