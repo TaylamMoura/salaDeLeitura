@@ -27,7 +27,8 @@
     --cor-botao:#638C6D;
     --cor-botao-letra: #F8F5E9;
     --cor-modal: #E0E5B6;
-    --cor-hover: #C84C05;
+    /*--cor-hover: #C84C05;*/
+    --cor-hover: #E0E5B6;
     --cor-barra-rolagem:#638C6D;
     --cor-thumb-rolagem: #F8F0E5;
 }
