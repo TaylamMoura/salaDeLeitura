@@ -2,6 +2,8 @@ package com.reading.sala_de_leitura.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import java.sql.Time;
 @Setter
@@ -21,6 +23,7 @@ public class SessoesDeLeitura {
 
     @ManyToOne
     @JoinColumn(name = "usuario_id")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Usuario usuario;
 
     @ManyToOne
