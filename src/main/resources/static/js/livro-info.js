@@ -165,3 +165,26 @@ function iniciarSessao() {
   }
     
 }
+
+//FUNÇÃO PARA ATUALIZAR A BARRA DE PROGRESSO
+setInterval(async function() {
+    const livroId = obterIdLivro();
+
+    try {
+        // Faz a requisição para obter a última página lida
+        const response = await fetch(`/sessao-leitura/ultima-pagina/${livroId}`);
+        const paginaFinal = await response.json();
+
+        // Obtém o total de páginas do livro
+        const livroResponse = await fetch(`/exibirDados/${livroId}`);
+        const livro = await livroResponse.json();
+        const totalPaginas = livro.paginas;
+
+        // Atualiza os elementos na tela
+        document.getElementById("paginaAtual").innerText = paginaFinal;
+        document.getElementById("totalPaginas").innerText = totalPaginas;
+        document.getElementById("progresso").style.width = (paginaFinal / totalPaginas) * 100 + "%";
+    } catch (error) {
+        console.error("Erro ao buscar progresso:", error);
+    }
+}, 30000);
