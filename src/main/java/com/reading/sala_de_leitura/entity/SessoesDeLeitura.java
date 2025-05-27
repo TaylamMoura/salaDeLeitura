@@ -4,8 +4,8 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
+import java.time.LocalDateTime;
 
-import java.sql.Time;
 @Setter
 @Getter
 @NoArgsConstructor
@@ -31,10 +31,10 @@ public class SessoesDeLeitura {
     private Livro livro;
 
     @Column(name = "inicio_sessao")
-    private Time inicioSessao;
+    private LocalDateTime inicioSessao;
 
     @Column(name = "fim_sessao")
-    private  Time fimSessao;
+    private  LocalDateTime fimSessao;
 
     @Column(name = "pagina_inicial")
     private int paginaInicial;
@@ -43,9 +43,16 @@ public class SessoesDeLeitura {
     private int paginaFinal;
 
     @Column(name = "tempo_leitura")
-    private Time tempoLeitura;
+    private Integer tempoLeitura;
 
     @Column(name = "url_capa")
     private String urlCapa;
 
+    //Antes de salvar uma nova SessoesDeLeitura, este método define inicioSessao com a data e hora atuais
+    @PrePersist
+    protected void onCreate(){
+        inicioSessao = LocalDateTime.now();
+    }
+
 }
+
