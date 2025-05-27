@@ -9,7 +9,8 @@ public record LivroDTO(
         int paginas,
         String urlCapa,
         int anoPublicacao,
-        int paginaAtual) {
+        int paginaAtual,
+        boolean livroFinalizado) {
 
     public LivroDTO(Livro livro, int paginaAtual) {
         this(
@@ -19,7 +20,8 @@ public record LivroDTO(
             livro.getPaginas(), 
             livro.getUrlCapa(), 
             livro.getAnoPublicacao(),
-            paginaAtual);
+            paginaAtual,
+            livro.getLivroFinalizado());
     }
     public LivroDTO(Livro livro){
         this(livro, 0);
