@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.nio.charset.StandardCharsets;
 import java.security.Key;
 import java.util.Date;
@@ -65,4 +64,3 @@ public class UsuarioService {
         return usuario;
     }
 }
-//Implementar: Bloqueio após tentativas falhas: Impedir ataques de força bruta limitando o número de tentativas de login.
