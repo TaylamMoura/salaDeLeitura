@@ -3,11 +3,12 @@ import url('styles.css');
 header {
     position: relative;
 }
+
 .livros-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  gap: 10px;
+  gap: 5px;
   padding-left: 100px;
 }
 
@@ -66,7 +67,7 @@ header {
 .livro-item {
   flex: 1 1 calc(20% - 10px);
   box-sizing: border-box;
-  margin-bottom: 20px;
+  margin-bottom: 5px !important;
 }
 
 /*Fonte do Título do Livro*/
@@ -78,6 +79,7 @@ header {
   overflow-wrap: break-word;
   max-width: 100px;
   text-align: center;
+  font-size: 14px;
 }
 
 .livro-item img {
@@ -85,7 +87,7 @@ header {
   height: 180px;
   max-width: 130px;
   display: block;
-  border-radius: 5px;
+  border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding-top: 15px;
 }
