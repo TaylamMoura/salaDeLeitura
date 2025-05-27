@@ -33,6 +33,9 @@ public class Livro {
     @JoinColumn(name = "usuario_id", nullable = false)
     private Usuario usuario;
 
+    @Column(name = "livro_finalizado", nullable = false)
+    private Boolean livroFinalizado = false;
+
     public void atualizar(AtualizarLivro dados) {
         if(dados.paginas() != 0){
             this.paginas = dados.paginas();
