@@ -10,7 +10,7 @@ public record SessaoDTO(
         @NotNull Long usuarioId,
         @NotNull Long livroId,
         @Min(1) int paginasLidas,
-        String tempoLeitura,
+        int tempoLeitura,
         int paginaFinal,
         String urlCapa) {
 
@@ -20,7 +20,7 @@ public record SessaoDTO(
                 sessoesDeLeitura.getUsuario().getId(),
                 sessoesDeLeitura.getLivro().getId(),
                 sessoesDeLeitura.getPaginaFinal() - sessoesDeLeitura.getPaginaInicial(), //PARA CALCULAR O TOTAL DE PÁGINAS LIDAS
-                sessoesDeLeitura.getTempoLeitura().toString(),
+                sessoesDeLeitura.getTempoLeitura(),
                 sessoesDeLeitura.getPaginaFinal(),
                 sessoesDeLeitura.getUrlCapa());
     }
