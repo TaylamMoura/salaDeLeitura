@@ -81,6 +81,13 @@ a {
   color: black;
 }
 
+.botao-voltar{
+    display: block;
+    position: relative; 
+    margin-top: 20px; 
+    margin-left: 20px;
+}
+
 .titulo__secundario{
     font-family: var(--fonte-textos);
     font-size: 25px;
