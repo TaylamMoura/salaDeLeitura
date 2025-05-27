@@ -45,7 +45,7 @@ public class LivroService {
                 String publishedDate = volumeInfo.get("publishedDate").getAsString();
                 int ano = publishedDate != null ? Integer.parseInt(publishedDate.split("-")[0]) : 0;
 
-                return new LivroDTO(null, title, author, pageCount, thumbnail, ano, 0);
+                return new LivroDTO(null, title, author, pageCount, thumbnail, ano, 0, false);
 
             } else {
                 System.out.println("Livro não encontrado. Tente outro título!");
@@ -74,7 +74,8 @@ public class LivroService {
                 livroDTO.paginas(),
                 urlCapa,
                 livroDTO.anoPublicacao(),
-                usuarioLogado
+                usuarioLogado,
+                false
         );
 
         repository.save(livro);
