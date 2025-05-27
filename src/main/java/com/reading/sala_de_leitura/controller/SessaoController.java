@@ -21,7 +21,7 @@ public class SessaoController {
 
     @PostMapping("/iniciar")
     public ResponseEntity<Void> iniciarSessao(@Valid @RequestBody SessaoDTO sessaoDTO) {
-        sessaoService.iniciarSessao();
+        sessaoService.iniciarSessao(sessaoDTO.livroId());
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
