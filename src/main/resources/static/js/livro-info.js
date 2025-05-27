@@ -39,6 +39,14 @@ async function exibirInformacoesLivro() {
         document.getElementById('autorLivro').innerHTML = ` ${livro.autor}`;
         document.getElementById('paginasLivro').innerHTML = ` ${livro.paginas}`;
         document.getElementById('anoPublicacao').innerHTML = ` ${livro.anoPublicacao}`;
+
+        //Salvar a capa e informação do livro no storage para resgatar em estatistica-livro
+        localStorage.setItem("capaLivro", livro.urlCapa);
+        localStorage.setItem("tituloLivro", livro.titulo);
+        localStorage.setItem("autorLivro", livro.autor);
+        localStorage.setItem("paginasLivro", livro.paginas);
+        localStorage.setItem("anoPublicacao", livro.anoPublicacao);
+
         
         //BARRA DE PROGRESSO
         const paginaAtual = livro.paginaAtual || 0;
@@ -165,6 +173,20 @@ function iniciarSessao() {
   }
     
 }
+
+
+//FUNÇÃO PARA CARREGAR PAGE ESTATISTICA-LIVRO
+function redirecionarEstatisticasLivro() {
+  const livroId = obterIdLivro();
+
+  if(livroId){
+      window.location.href = `estatistica-livro.html?livroId=${livroId}`;
+  } else {
+    console.error("ID não encontrado na URL");
+  }
+
+}
+
 
 //FUNÇÃO PARA ATUALIZAR A BARRA DE PROGRESSO
 setInterval(async function() {
