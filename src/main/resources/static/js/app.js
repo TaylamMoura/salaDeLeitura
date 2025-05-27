@@ -242,5 +242,11 @@ async function fazerLogout() {
 }
 
 
+//FUNÇÃO PARA CARREGAR PAGE ESTATISTICA-GERAL
+function mostrarEstatisticaGeral() {
+  window.location.href = 'estatistica-geral.html';
+}
+
+
 // Chama a função ExibirLivrosNaPag ao carregar a página
 window.onload = ExibirLivrosNaPag;
