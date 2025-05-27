@@ -11,4 +11,7 @@ public interface LivroRepository extends JpaRepository<Livro, Long> {
     List<Livro> findByUsuario(Usuario usuario);
 
     Optional<Livro> findByIdAndUsuario(Long id, Usuario usuario);
+
+    List<Livro> findByUsuarioAndLivroFinalizadoTrue(Usuario usuario);
+
 }
