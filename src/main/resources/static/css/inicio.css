@@ -9,26 +9,29 @@ body{
 }
 
 #titulo-logo{
-    font-size:60px;
+    font-size:50px;
     margin:10px;
 }
 
 h2{
     font-family: var(--fonte-textos);
-    font-size: 25px;
+    font-size: 20px;
     font-weight: 300;
 
 }
 
 h3{
-    font-size: 40px;
+    font-size: 30px;
     font-family: var(--fonte-principal);
     font-weight: lighter;
+
 }
 
 #texto__p{
     font-family: var(--fonte-textos);
-    font-size: 20px;
+    font-size: 18px;
+    font-weight: 500;
+
 }
 
 /*linha*/
@@ -60,20 +63,20 @@ hr{
 }
 
 #botao-login, #botao-cadastro{
-    width: 200px;
-    height: 60px;
+    width: 170px;
+    height: 70px;
     background-color: #E0E5B6;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     font-family: var(--fonte-botao);
-    font-size: 25px;
+    font-size: 20px;
     margin: 20px auto;
     text-align: center;
 }
 
 #botao-login:hover, #botao-cadastro:hover{
-    background-color: var(--cor-hover);
+    background-color: #C84C05;
 }
 
 /* MODAL*/
