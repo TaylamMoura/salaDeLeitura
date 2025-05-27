@@ -44,7 +44,6 @@ public class LivroController {
 
     @GetMapping("/pesquisarLivro")
     public LivroDTO pesquisarLivro(@RequestParam String titulo) {
-        LivroDTO livroDTO = new LivroDTO(null, titulo, null, 0, null, 0, 0);
         return livroService.pesquisarPorTitulo(titulo);
     }
 
@@ -55,6 +54,11 @@ public class LivroController {
 
         String emailLogado = authentication.getName();
         Usuario usuarioLogado = usuarioService.buscarPorEmail(emailLogado);
+
+        if (livroDTO.titulo() == null || livroDTO.titulo().trim().isEmpty()) {
+            throw new ValidationException("Título do livro não pode estar vazio.");
+        }
+
         livroService.salvarLivro(livroDTO, usuarioLogado);
         return ResponseEntity.ok(livroDTO);
     }
@@ -72,7 +76,6 @@ public class LivroController {
     @GetMapping("/exibirDados/{id}")
     public ResponseEntity<LivroDTO> exibirDados(@PathVariable Long id, Authentication authentication){
         Usuario usuarioLogado = usuarioService.buscarPorEmail(authentication.getName());
-        //LivroDTO livroDTO = livroService.exibirDadosLivro(id, usuarioLogado);
 
         Livro livro = livroRepository.findByIdAndUsuario(id, usuarioLogado)
                 .orElseThrow(() -> new ValidationException("Livro não encontrado"));
@@ -107,7 +110,8 @@ public class LivroController {
                 livroAtualizado.getPaginas(),
                 livroAtualizado.getUrlCapa(),
                 livroAtualizado.getAnoPublicacao(),
-                0 //Valor default
+                0,
+                livroAtualizado.getLivroFinalizado()
         );
         return ResponseEntity.ok(livroDTO);
     }
