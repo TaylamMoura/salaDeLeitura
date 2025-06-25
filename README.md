@@ -1,6 +1,6 @@
 <h1>Projeto Sala de Leitura 📚</h1>
 
->>🏗️ em desenvolvimento
+>> 🔧 Projeto concluído — próximos passos incluem a migração para uma arquitetura de microsserviços 😃 
 
 
 ## *Visão Geral* 🔍
@@ -81,3 +81,14 @@
 <h3>Ferramenta de Serialização:</h3>
 
   - **Gson:** Biblioteca para conversão entre objetos Java e JSON.
+
+## Algumas limitações: ⚠️ 
+Durante a integração com a API do Google Books, foram observadas algumas limitações nos dados retornados:
+
+  - Algumas obras não possuem capa visível ou edição específica do título pesquisado.
+
+  - Informações como quantidade de páginas e, principalmente, o ano de publicação, podem vir inconsistentes ou incompletas — normalmente refletindo a edição listada na API, e não a primeira publicação da obra.
+
+  - Essas limitações impactam diretamente a precisão de certas funcionalidades da aplicação, como o progresso de leitura e os metadados exibidos.
+
+Ainda assim, após testar outras opções, a API do Google se mostrou a alternativa mais viável e de integração mais simples, atendendo ao objetivo principal do projeto: permitir a adição rápida e prática de livros à biblioteca virtual.
