@@ -91,4 +91,4 @@ Durante a integração com a API do Google Books, foram observadas algumas limit
 
   - Essas limitações impactam diretamente a precisão de certas funcionalidades da aplicação, como o progresso de leitura e os metadados exibidos.
 
-Ainda assim, após testar outras opções, a API do Google se mostrou a alternativa mais viável e de integração mais simples, atendendo ao objetivo principal do projeto: permitir a adição rápida e prática de livros à biblioteca virtual.
+Ainda assim, após testar outras opções, a API do Google se mostrou a alternativa mais viável e de integração mais simples, no momento do desenvolvimento do projeto, atendendo ao objetivo principal do projeto: permitir a adição rápida e prática de livros à biblioteca virtual.
